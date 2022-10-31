@@ -1,6 +1,13 @@
 ![로고](src/main/webapp/resources/images/logo.png)
+<p align="center">
+    <a href="">
+        <img alt="" src="https://github.com/5sbread/Gudee_Team_Project/blob/main/src/main/webapp/resources/images/logo.png">
+    </a>
+</p>
 
-# 중고거래와 모임 웹사이트 📦👥
+<p align="center">
+    <strong>중고거래와 모임 웹사이트 📦👥</strong>
+</p>
 
 ## Features
 
@@ -19,6 +26,11 @@
 ~~~~~~~~~~~~~~~~~~
 김남진, 권경문, 안다은, 서소영
 ~~~~~~~~~~~~~~~~~~
+
+## Contributors Wall
+<a href="https://github.com/Namjin-kimm/Gudee_Team_Project/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Namjin-kimm/Gudee_Team_Project" />
+</a>
 
 ## Work Flow
 ![Work Flow]()
