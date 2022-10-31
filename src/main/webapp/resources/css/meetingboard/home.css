@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'MICEGothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MICEMyungjo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEMyungjo.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	padding-top: 70px;
+	background-image: url('/resources/images/meetingboard/circle-scatter-listitem.svg');
+}
+
+#mainSectionDiv {
+	width: 100%;
+	height: 120vh;
+}
+
+#mainSectionTopTitle {
+	font-family: 'MICEGothic Bold';
+	font-weight: bold;
+	font-size: 3rem;
+	width: 19rem;
+}
+
+#mainSectionTop {
+	width: 80%;
+	height: 60vh;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#mainSectionBottom {
+	width: 80%;
+	height: 60vh;
+	margin: auto;
+}
+
+#mainSectionTopTitleContainer {
+	padding: 3rem 0 0 3rem;
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+#carouselExampleIndicators {
+	width: 50%;
+	padding-top: 4rem;
+}
+
+#listBtn {
+	font-family: 'MICEGothic Bold';
+	font-size: 2rem;
+}
