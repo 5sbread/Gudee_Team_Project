@@ -1,4 +1,3 @@
-![로고](src/main/webapp/resources/images/logo.png)
 <p align="center">
     <a href="">
         <img alt="" src="https://github.com/5sbread/Gudee_Team_Project/blob/main/src/main/webapp/resources/images/logo.png">
@@ -7,11 +6,10 @@
 
 <p align="center">
     <strong>중고거래와 모임 웹사이트 📦👥</strong>
+    <h1 align="center">Goodee Market</h1>
 </p>
 
 ## Features
-
-구디마켓 기능을 소개합니다.
 ~~~~~~~~~~~~~~~~~~
 [ 중고거래📦 ]
 1. 판매, 후기
