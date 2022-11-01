@@ -1,6 +1,8 @@
 package com.goodee.market.trade.item;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,9 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.goodee.market.member.MemberDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.util.MainPager;
 import com.goodee.market.util.Pager;
@@ -25,6 +30,58 @@ public class ItemController{
 	private ItemService itemService;
 	
 	
+//	@PostMapping("review")
+//	@ResponseBody
+//	public int setItemReview()throws Exception {
+//		
+//		
+//		return "redirect:./trade/mypage";
+//	}	
+	
+//	
+	//--------------------- Comment --------------------------
+	
+		@PostMapping("commentUpdate")
+		@ResponseBody
+		public int setCommentUpdate(ItemCommentDTO itemCommentDTO)throws Exception{
+			int result = itemService.setCommentUpdate(itemCommentDTO);
+			return result;
+		}
+		
+		@PostMapping("commentDelete")
+		@ResponseBody
+		public int setCommentDelete(ItemCommentDTO itemCommentDTO)throws Exception{
+			int result = itemService.setCommentDelete(itemCommentDTO);
+			return result;
+		}
+		
+		
+		@GetMapping("commentList")
+		@ResponseBody
+		public Map<String, Object> getcommentList(ItemCommentPager itemCommentPager)throws Exception{
+			List<ItemCommentDTO> ar = itemService.getCommentList(itemCommentPager);
+//			System.out.println("CommentList");
+//			System.out.println(ar.size());			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("list", ar);
+			map.put("pager", itemCommentPager);
+			
+			return map;
+			
+		}
+		
+	
+	@PostMapping("commentAdd")
+	@ResponseBody
+	public String setCommentAdd(ItemCommentDTO itemCommentDTO)throws Exception {
+		int result = itemService.setCommentAdd(itemCommentDTO);
+		System.out.println(itemCommentDTO.getItemNum());
+		System.out.println(itemCommentDTO.getWriter());
+		System.out.println(itemCommentDTO.getContents());
+		
+		String jsonResult="{\"result\":\""+result+"\"}";
+		return jsonResult;
+	}
 	
 	@PostMapping("fileDelete")
 	@ResponseBody
@@ -45,12 +102,14 @@ public class ItemController{
 		mv.setViewName("trade/main");
 		return mv;
 	}
-	
+
 	
 	//카테고리 메인
 	@GetMapping(value = "category")
-	public ModelAndView getList(Pager pager)throws Exception {
+
+	public ModelAndView getList(Pager pager, ItemImageDTO itemImageDTO)throws Exception {
 		System.out.println("category");
+		System.out.println("Filename:"+itemImageDTO.getFileName());
 		
 		ModelAndView mv = new ModelAndView();
 		List<ItemDTO> ar =itemService.getList(pager);
@@ -58,7 +117,7 @@ public class ItemController{
 		mv.addObject("pager", pager);
 		
 		mv.setViewName("trade/category");
-		return mv;
+		
 	}
 	
 	
@@ -101,6 +160,9 @@ public class ItemController{
 	public ModelAndView setAdd(ItemDTO itemDTO,MultipartFile[] files,HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView(); 
 		int item= itemService.setAdd(itemDTO,files,session.getServletContext());
+		MemberDTO memberDTO= (MemberDTO)session.getAttribute("member");
+		mv.addObject("itemDTO",itemDTO);
+		mv.addObject("member", memberDTO);
 		mv.setViewName("redirect:./category");
 		System.out.println("add success");
 		return mv;
@@ -114,6 +176,7 @@ public class ItemController{
 		itemDTO.setItemNum(num);
 		itemDTO = itemService.getDetail(itemDTO);
 		mv.addObject("itemDTO", itemDTO);
+		
 		mv.setViewName("trade/update");
 		return mv;
 	
