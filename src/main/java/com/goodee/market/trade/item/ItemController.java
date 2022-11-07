@@ -95,8 +95,12 @@ public class ItemController{
 	@GetMapping(value = "main")
 	public ModelAndView getTradeMain(MainPager mainPager)throws Exception {
 		System.out.println("중고 메인~.~");
+		
 		ModelAndView mv = new ModelAndView();
 		List<ItemDTO> ar = itemService.getTradeMain(mainPager);
+		
+		ItemImageDTO itemImageDTO = new ItemImageDTO();
+		System.out.println("Filename:"+itemImageDTO.getFileName());
 		mv.addObject("list", ar);	
 		mv.addObject("pager", mainPager);
 		mv.setViewName("trade/main");
@@ -109,7 +113,6 @@ public class ItemController{
 
 	public ModelAndView getList(Pager pager, ItemImageDTO itemImageDTO)throws Exception {
 		System.out.println("category");
-		System.out.println("Filename:"+itemImageDTO.getFileName());
 		
 		ModelAndView mv = new ModelAndView();
 		List<ItemDTO> ar =itemService.getList(pager);
@@ -117,7 +120,7 @@ public class ItemController{
 		mv.addObject("pager", pager);
 		
 		mv.setViewName("trade/category");
-		
+		return mv;
 	}
 	
 	

@@ -79,9 +79,9 @@
 	             <div class="col-lg-4 col-md-6 col-sm-6">
 	                  <div class="product-item">
 	                       <div class="featured-item-pic">
-	                        	<c:forEach items="${item.itemImageDTOs}" var="file" >
-	                                <img alt="" src="../../../resources/upload/item/${file.fileName}">
-	                            </c:forEach>
+	                        	
+	                                <img alt="" src="../../../resources/upload/item/${item.itemImageDTOs.fileName}">
+	                            
 	                       </div>
 	
 	                       <div class="featured-item-text">

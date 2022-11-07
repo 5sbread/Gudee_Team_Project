@@ -32,14 +32,13 @@
     </delete>
     
     	<!-- 메인 -->
-    	<select id="getTradeMain" resultType="itemDTO" parameterType="Pager">
+    	<select id="getTradeMain" resultType="itemDTO" parameterType="MainPager">
 			SELECT IT.* FROM
 					    (SELECT ROWNUM R, IT.* FROM
 					            (SELECT * FROM ITEM I
 			                        left join
 			                        itemimage IM
 			                        on I.ITEMNUM = IM.ITEMNUM
-					            	<include refid="select"></include>
 			                    ) IT
 					    ) IT
 			    WHERE R BETWEEN #{startRow} and #{lastRow}
@@ -51,24 +50,16 @@
     	<!-- 카테고리 메인 -->
 
  		<select id="getList" resultType="itemDTO" parameterType="Pager">
-				
-				 SELECT ITEM.*, IM.*
-		         FROM
-				 (SELECT * FROM
-				 ( SELECT ROWNUM R, I.* FROM
-				 (SELECT * FROM ITEM 
-				 <include refid="select"></include>
-				            
-				 ORDER BY ITEMNUM DESC)I
-				 )
-				 WHERE R BETWEEN #{startRow} and #{lastRow}	
-					
-		         ) ITEM
-			     INNER JOIN
-			     ITEMIMAGE IM
-			     ON ITEM.ITEMNUM = IM.ITEMNUM
-			     ORDER BY ITEM.ITEMNUM DESC, IM.FILENUM ASC
-				 	
+				SELECT IT.* FROM
+					    (SELECT ROWNUM R, IT.* FROM
+					            (SELECT * FROM ITEM I
+			                        left join
+			                        itemimage IM
+			                        on I.ITEMNUM = IM.ITEMNUM
+					            	<include refid="select"></include>
+			                    ) IT
+					    ) IT
+			    WHERE R BETWEEN #{startRow} and #{lastRow}
 
 		</select>
 
