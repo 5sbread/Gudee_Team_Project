@@ -11,11 +11,17 @@
 				<when test="select == 'title'">ITEMTITLE</when>
 				<otherwise>ITEMCONTENTS</otherwise>
 			</choose>
-
 		LIKE '%'||#{select}||'%'
 	</sql>
-  
-
+	
+	<sql id="sort">
+		ORDER BY
+		<choose>
+			<when test="sort == 'RECENT_SORT'">I.ITEMNUM DESC</when>
+			<when test="sort == 'PRICE_DESC_SORT'">I.ITEMPRICE DESC</when>
+			<otherwise>I.ITEMPRICE ASC</otherwise>
+		</choose>
+	</sql>
     
 	<select id="getFileDetail" resultType="ItemImageDTO" parameterType="ItemImageDTO">
 		SELECT * FROM ITEMIMAGE WHERE FILENUM=#{fileNum}
@@ -32,7 +38,7 @@
     </delete>
     
     	<!-- 메인 -->
-    	<select id="getTradeMain" resultType="itemDTO" parameterType="MainPager">
+    	<select id="getTradeMain" resultMap="getMainResult" parameterType="MainPager">
 			SELECT IT.* FROM
 					    (SELECT ROWNUM R, IT.* FROM
 					            (SELECT * FROM ITEM I
@@ -49,7 +55,7 @@
 		
     	<!-- 카테고리 메인 -->
 
- 		<select id="getList" resultType="itemDTO" parameterType="Pager">
+ 		<select id="getList" resultMap="getMainResult" parameterType="Pager">
 				SELECT IT.* FROM
 					    (SELECT ROWNUM R, IT.* FROM
 					            (SELECT * FROM ITEM I
@@ -57,14 +63,32 @@
 			                        itemimage IM
 			                        on I.ITEMNUM = IM.ITEMNUM
 					            	<include refid="select"></include>
+					            	AND ITEMCATEGORY LIKE '%'||#{filter}||'%'
+					            	<include refid="sort"></include>
 			                    ) IT
 					    ) IT
 			    WHERE R BETWEEN #{startRow} and #{lastRow}
 
 		</select>
+		
+		<resultMap type="ItemDTO" id="getMainResult">
+		<id column="itemnum" property="itemNum"/>
+				<result column="membernum" property="memberNum"/>
+				<result column="itemtitle" property="itemTitle"/>
+				<result column="itemcontents" property="itemContents"/>
+				<result column="itemcategory" property="itemCategory"/>
+				<result column="itemprice" property="itemPrice"/>
+				<result column="itemduedate" property="itemDueDate"/>
+				<result column="itemstatus" property="itemStatus"/>
+				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
+				<id column="filenum" property="fileNum"/>
+				<result column="filename" property="fileName"/>
+				<result column="oriname" property="oriName"/>
+				</collection>
+		</resultMap>
 
 		<!-- 찜 목록 -->
-		<select id="getHeartList" resultType="itemDTO" parameterType="itemDTO">
+		<select id="getHeartList" resultMap="getMainResult" parameterType="ItemDTO">
 		 	SELECT *
 	            FROM ITEM I, ITEMIMAGE IM
 		            INNER JOIN
@@ -74,7 +98,7 @@
 		            INNER JOIN
 		            	MEMBER M
 		            ON M.MEMBERNUM= IM.MEMBERNUM
-            WHERE M.MEMBERNUM=#{memberNum} 	
+            WHERE M.MEMBERNUM=62
 		</select>
 
 

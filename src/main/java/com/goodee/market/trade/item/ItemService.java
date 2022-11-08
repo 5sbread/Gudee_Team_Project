@@ -91,11 +91,9 @@ public class ItemService{
 	}
 	
 	
-	public List<ItemDTO> getHeartList(Pager pager)throws Exception{
-		Long totalCount=itemDAO.getCount(pager);
-		pager.getNum(totalCount);
-		pager.getRowNum();
-		return itemDAO.getHeartList(pager);
+	public List<ItemDTO> getHeartList(ItemDTO itemDTO)throws Exception{
+		
+		return itemDAO.getHeartList(itemDTO);
 	}
 	
 	

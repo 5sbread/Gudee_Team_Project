@@ -80,8 +80,8 @@ public class ItemDAO  {
 	}
 
 	
-	public List<ItemDTO> getHeartList(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getHeartList", pager);
+	public List<ItemDTO> getHeartList(ItemDTO itemDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getHeartList", itemDTO);
 	}
 
 		

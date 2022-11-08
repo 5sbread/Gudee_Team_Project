@@ -44,7 +44,7 @@
                             	<c:forEach items="${list}" var="item">
 	                                <tr>
 	                                    <td class="hl-item">
-	                                        <img src="/resources/images/trade/cart/cart-1.jpg" alt="" class="hl-img">
+	                                        <img src="../resources/upload/item/${item.itemImageDTOs[0].fileName}" alt="" class="hl-img">
 	                                        <h5 class="hl-text">${item.itemNum}</h5>
 	                                    </td>
 	                                    <td class="hl-price">

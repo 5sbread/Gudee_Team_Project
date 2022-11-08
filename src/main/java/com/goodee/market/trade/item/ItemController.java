@@ -93,14 +93,12 @@ public class ItemController{
 	
 	//메인페이지
 	@GetMapping(value = "main")
-	public ModelAndView getTradeMain(MainPager mainPager)throws Exception {
-		System.out.println("중고 메인~.~");
+	public ModelAndView getTradeMain(MainPager mainPager, HttpSession session)throws Exception {
+		System.out.println("중고 메인");
 		
 		ModelAndView mv = new ModelAndView();
 		List<ItemDTO> ar = itemService.getTradeMain(mainPager);
 		
-		ItemImageDTO itemImageDTO = new ItemImageDTO();
-		System.out.println("Filename:"+itemImageDTO.getFileName());
 		mv.addObject("list", ar);	
 		mv.addObject("pager", mainPager);
 		mv.setViewName("trade/main");
@@ -110,12 +108,12 @@ public class ItemController{
 	
 	//카테고리 메인
 	@GetMapping(value = "category")
-
-	public ModelAndView getList(Pager pager, ItemImageDTO itemImageDTO)throws Exception {
+	public ModelAndView getList(Pager pager)throws Exception {
 		System.out.println("category");
 		
 		ModelAndView mv = new ModelAndView();
 		List<ItemDTO> ar =itemService.getList(pager);
+		
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
 		
@@ -126,13 +124,13 @@ public class ItemController{
 	
 	//찜목록
 	@GetMapping(value = "heartlist")
-	public ModelAndView getHeartList(Pager pager)throws Exception {
-		System.out.println("찜.");
+	public ModelAndView getHeartList(ItemDTO itemDTO)throws Exception {
+		System.out.println("찜");
+		
 		ModelAndView mv =new ModelAndView();
-		List<ItemDTO> ar = itemService.getHeartList(pager);
+		List<ItemDTO> ar = itemService.getHeartList(itemDTO);
 		
 		mv.addObject("list", ar);	
-		mv.addObject("pager", pager);
 		mv.setViewName("trade/heartlist");
 		return mv;
 	}

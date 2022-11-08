@@ -2,6 +2,7 @@ package com.goodee.market.trade.myPage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.market.member.MemberDTO;
+import com.goodee.market.member.MemberService;
 import com.goodee.market.trade.item.ItemDAO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
@@ -22,20 +25,30 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
+	@Autowired
+	private MemberService memberService;
+	
 	
 	@GetMapping(value = "main")
-	public String getMypage (Model model) throws Exception{
+	public ModelAndView getMypage (HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMemberDetail(memberDTO);
+		mv.addObject("myPage", memberDTO);
+		
 		List<ItemDTO> ar = myPageService.getSellItemList();
-		model.addAttribute("sellitemlist", ar);
+		mv.addObject("sellitemlist", ar);
 		
 		ar = myPageService.getBuyItemList();
-		model.addAttribute("buyitemlist", ar);
+		mv.addObject("buyitemlist", ar);
 		
 		List<ReviewDTO> ar2 = myPageService.getReviewList();
-		model.addAttribute("reviewlist", ar2);
+		mv.addObject("reviewlist", ar2);
 		
 		System.out.println("중고 마이페이지");
-		return "mypage/trade/main";
+		mv.setViewName("mypage/trade/main");
+		return mv;
 	}
 	
 	

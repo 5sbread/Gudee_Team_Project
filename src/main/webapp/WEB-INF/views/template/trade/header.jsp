@@ -106,13 +106,13 @@
 				  <ul class="dropdown-menu">
 						<li><a href="/trade/category" class="cate-a-all">전체 카테고리</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a href="/trade/category" class="cate-a">의류</a></li>
-						<li><a href="/trade/category" class="cate-a">식품류</a></li>
-						<li><a href="/trade/category" class="cate-a">도서/문구</a></li>
-						<li><a href="/trade/category" class="cate-a">뷰티/미용</a></li>
-						<li><a href="/trade/category" class="cate-a">생활/디지털</a></li>
-						<li><a href="/trade/category" class="cate-a">반려동물 용품</a></li>
-						<li><a href="/trade/category" class="cate-a">가구/인테리어</a></li>
+							<li class="cate-li"><a href="/trade/category?page=${i}&filter=의류&select=${pager.select}&search=${pager.search}" class="cate-a">의류</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}" class="cate-a">식품류</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=도서/문구&select=${pager.select}&search=${pager.search}" class="cate-a">도서/문구</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=뷰티/미용&select=${pager.select}&search=${pager.search}" class="cate-a">뷰티/미용</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=생활/디지털&select=${pager.select}&search=${pager.search}" class="cate-a">생활/디지털</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=반려동물용품&select=${pager.select}&search=${pager.search}" class="cate-a">반려동물 용품</a></li>
+	                        <li class="cate-li"><a href="/trade/category?page=${i}&filter=가구/인테리어&select=${pager.select}&search=${pager.search}" class="cate-a">가구/인테리어</a></li>
 					</ul>
 				</li>
 				<li class="cate-li">
@@ -120,13 +120,13 @@
 				  <ul class="dropdown-menu">
 						<li><a href="/trade/review/main" class="cate-a-all">전체 카테고리</a></li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a href="/trade/review/cloth" class="cate-a">의류</a></li>
-						<li><a href="/trade/review/food" class="cate-a">식품류</a></li>
-						<li><a href="/trade/review/book" class="cate-a">도서/문구</a></li>
-						<li><a href="/trade/review/beauty" class="cate-a">뷰티/미용</a></li>
-						<li><a href="/trade/review/digital" class="cate-a">생활/디지털</a></li>
-						<li><a href="/trade/review/pet" class="cate-a">반려동물 용품</a></li>
-						<li><a href="/trade/review/interior" class="cate-a">가구/인테리어</a></li>
+						<li><a href="/trade/category?page=${i}&filter=의류&select=${pager.select}&search=${pager.search}" class="cate-a">의류</a></li>
+						<li><a href="/trade/review?page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}" class="cate-a">식품류</a></li>
+						<li><a href="/trade/review?page=${i}&filter=도서/문구&select=${pager.select}&search=${pager.search}" class="cate-a">도서/문구</a></li>
+						<li><a href="/trade/review?page=${i}&filter=뷰티/미용&select=${pager.select}&search=${pager.search}" class="cate-a">뷰티/미용</a></li>
+						<li><a href="/trade/review?page=${i}&filter=생활/디지털&select=${pager.select}&search=${pager.search}" class="cate-a">생활/디지털</a></li>
+						<li><a href="/trade/review?page=${i}&filter=반려동물용품&select=${pager.select}&search=${pager.search}" class="cate-a">반려동물 용품</a></li>
+						<li><a href="/trade/review?page=${i}&filter=가구/인테리어&select=${pager.select}&search=${pager.search}" class="cate-a">가구/인테리어</a></li>
 				  </ul>
 				</li>
 				<li class="cate-li">

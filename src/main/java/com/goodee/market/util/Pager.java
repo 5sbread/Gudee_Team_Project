@@ -21,8 +21,11 @@ public class Pager {
 		//제목|카테고리
 		private String select;
 
-		//정렬
+		//카테고리
 		private String filter;
+		
+		//정렬
+		private String sort;
 		
 		
 		public Pager() {
@@ -187,6 +190,19 @@ public class Pager {
 		public void setSelect(String select) {
 			this.select = select;
 		}
+
+		public String getSort() {
+			if(this.sort==null) {
+				this.sort="";
+			}
+			return sort;
+		}
+
+		public void setSort(String sort) {
+			this.sort = sort;
+		}
+		
+		
 
 
 		

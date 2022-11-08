@@ -42,15 +42,15 @@
                 	<!-- 카테고리 -->             
                     <div class="sidebar">
                         <div class="sidebar-cate">
-                            <h4 class="sidebar-cate-title">전체 카테고리</h4>
+                            <h4 class="sidebar-cate-title"><a href="/trade/category?page=${i}&select=${pager.select}&search=${pager.search}" class="scate-title">전체 카테고리</a></h4>
                             <ul class="scate-ul">
-                            	<li class="scate-li"><a href="/trade/category?&page=${i}&filter=의류&select=${pager.select}&search=${pager.search}" class="scate-a">의류</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}" class="scate-a">식품류</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=도서/문구&select=${pager.select}&search=${pager.search}" class="scate-a">도서/문구</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=뷰티/미용&select=${pager.select}&search=${pager.search}" class="scate-a">뷰티/미용</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=생활/디지털&select=${pager.select}&search=${pager.search}" class="scate-a">생활/디지털</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=반려동물용품&select=${pager.select}&search=${pager.search}" class="scate-a">반려동물 용품</a></li>
-	                            <li class="scate-li"><a href="/trade/category?&page=${i}&filter=가구/인테리어&select=${pager.select}&search=${pager.search}" class="scate-a">가구/인테리어</a></li>							
+                            	<li class="scate-li"><a href="/trade/category?page=${i}&filter=의류&select=${pager.select}&search=${pager.search}" class="scate-a">의류</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}" class="scate-a">식품류</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=도서/문구&select=${pager.select}&search=${pager.search}" class="scate-a">도서/문구</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=뷰티/미용&select=${pager.select}&search=${pager.search}" class="scate-a">뷰티/미용</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=생활/디지털&select=${pager.select}&search=${pager.search}" class="scate-a">생활/디지털</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=반려동물용품&select=${pager.select}&search=${pager.search}" class="scate-a">반려동물 용품</a></li>
+	                            <li class="scate-li"><a href="/trade/category?page=${i}&filter=가구/인테리어&select=${pager.select}&search=${pager.search}" class="scate-a">가구/인테리어</a></li>							
                             </ul>
                         </div>
                     </div>                    
@@ -64,9 +64,9 @@
                         <div class="sort-row">
                             <div class="filter-sort">                           
                                 <ul id="filter" name="filter">
-                                    <li class="filter-li" value="recent"><a href="/trade/category" class="filter-a">최신순</a></li>
-                                    <li class="filter-li"><a href="/trade/category" class="filter-a">높은 가격순</a></li>
-                                    <li class="filter-li"><a href="/trade/category" class="filter-a">낮은 가격순</a></li>
+                                    <li class="filter-li" value="recent"><a href="/trade/category?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=RECENT_SORT" class="filter-a">최신순</a></li>
+                                    <li class="filter-li"><a href="/trade/category?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=PRICE_DESC_SORT" class="filter-a">높은 가격순</a></li>
+                                    <li class="filter-li"><a href="/trade/category?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=PRICE_ASC_SORT" class="filter-a">낮은 가격순</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -78,12 +78,8 @@
                     <c:forEach var="item" items="${list}">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product-item">
-                                <img alt="" src="../resources/upload/item/${item.itemImageDTOs[0].fileName}">
-
                                 <div class="featured-item-pic">
-                                	<c:forEach items="${item.itemImageDTOs}" var="fileDTO" >
-                                		<img alt="" src="../resources/upload/item/${fileDTO.fileName}">
-                                	</c:forEach>
+                                	<img alt="" src="../resources/upload/item/${item.itemImageDTOs[0].fileName}">
                                 </div>
 
                                 <div class="featured-item-text">

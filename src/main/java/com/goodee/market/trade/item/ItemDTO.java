@@ -3,6 +3,8 @@ package com.goodee.market.trade.item;
 import java.sql.Date;
 import java.util.List;
 
+import com.goodee.market.member.MemberDTO;
+
 
 public class ItemDTO{
 	
@@ -14,7 +16,7 @@ public class ItemDTO{
 	   private Integer itemPrice;
 	   private Date itemDueDate;
 	   private Integer itemStatus;
-	   private List<ItemImageDTO>itemImageDTOs;
+	   private List<ItemImageDTO> itemImageDTOs;
 	   
 	   
 

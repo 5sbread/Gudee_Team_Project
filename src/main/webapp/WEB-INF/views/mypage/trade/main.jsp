@@ -42,9 +42,9 @@
 							<div class="sidebar-mp-mb">
 								<h4 class="sidebar-mb-title">마이페이지🎁</h4>
 								<div class="sidebar-mb-con">
-									<img class ="mb-pic" alt="" src="/resources/images/trade/product/product-5.jpg">
-									<h6 class="mp-mb-nk">닉네임 : </h6>
-									<h6 class="mp-mb-nk">이름 : </h6>
+									<img class ="mb-pic" alt="" src="/resources/upload/member/${myPage.memberFileDTO.fileName}">
+									<h6 class="mp-mb-nk">닉네임 : ${sessionScope.member.nickname}</h6>
+									<h6 class="mp-mb-nk">이름 : ${sessionScope.member.name}</h6>
 								</div>	
 								<a class="mp-mb-h" href="#">회원정보 수정</a>
 							</div>
@@ -58,22 +58,6 @@
 									<li class="mp-li"><a href="/trade/reviewlist" class="mp-a">내가 작성한 후기</a></li>							
 								</ul>
 							</div>
-
-							<!-- 모임 -->
-							<div class="sidebar-mp">
-								<h4 class="sidebar-mp-title">모임🎠</h4>
-								<ul class="mp-ul">
-									<li class="mp-li"><a href="/trade/category" class="mp-a">의류</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">식품류</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">도서/문구</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">뷰티/미용</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">생활/디지털</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">반려동물 용품</a></li>
-									<li class="mp-li"><a href="#" class="mp-a">가구/인테리어</a></li>							
-								</ul>
-							</div>
-						</div>                    
-					</div>
 					<!-- sidebar end -->
 					
 					<!-- main -->

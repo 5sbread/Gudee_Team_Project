@@ -15,7 +15,7 @@ public interface ItemInterface {
 	
 	public List<ItemDTO> getList(Pager pager)throws Exception;
 
-	public List<ItemDTO> getHeartList (Pager pager) throws Exception;
+	public List<ItemDTO> getHeartList (ItemDTO itemDTO) throws Exception;
 	
 	
 	public int setAddFile(ItemImageDTO itemImageDTO)throws Exception;

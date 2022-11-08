@@ -79,9 +79,8 @@
 	             <div class="col-lg-4 col-md-6 col-sm-6">
 	                  <div class="product-item">
 	                       <div class="featured-item-pic">
-	                        	
-	                                <img alt="" src="../../../resources/upload/item/${item.itemImageDTOs.fileName}">
-	                            
+	                                <img alt="" src="../resources/upload/item/${item.itemImageDTOs[0].fileName}">
+	                       		
 	                       </div>
 	
 	                       <div class="featured-item-text">
