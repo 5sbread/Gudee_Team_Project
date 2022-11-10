@@ -169,8 +169,14 @@
                             </div>
                             <div class="right">
                              <span class="title"><a href="./delete?num=${dto.itemNum}" class="btn btn-danger">상품 삭제</a></span>
-                            
+                             
                             </div>
+                            <c:if test="${!isLikeExist }">
+								<img alt="" src="/resources/images/meetingboard/detail_star_icon.svg" id="likeBtn">
+							</c:if>
+							<c:if test="${isLikeExist }">
+								<img alt="" src="/resources/images/meetingboard/detail_star_xmas_icon.svg" id="unlikeBtn">
+							</c:if>
             
 			</div>
             
