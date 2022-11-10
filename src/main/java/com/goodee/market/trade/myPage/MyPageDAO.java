@@ -12,6 +12,7 @@ import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.trade.sellItemList.SellItemListDTO;
+import com.goodee.market.util.MyPagePager;
 
 @Repository
 public class MyPageDAO implements MyPageInterface{
@@ -22,9 +23,9 @@ public class MyPageDAO implements MyPageInterface{
 	
 	
 	@Override
-	public List<MemberDTO> getMyPage() throws Exception {
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE +"getMyPage");
+		return sqlSession.selectOne(NAMESPACE +"getMyPage", memberDTO);
 	}
 	
 		
@@ -33,9 +34,9 @@ public class MyPageDAO implements MyPageInterface{
 	
 	//판매 리스트
 	@Override
-	public List<ItemDTO> getSellItemList() throws Exception {
+	public List<ItemDTO> getSellItemList(MyPagePager myPagePager) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE +"getSellItemList");
+		return sqlSession.selectList(NAMESPACE +"getSellItemList", myPagePager);
 	}
 	
 	
@@ -43,17 +44,23 @@ public class MyPageDAO implements MyPageInterface{
 
 	//구매 리스트
 	@Override
-	public List<ItemDTO> getBuyItemList() throws Exception {
+	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getBuyItemList");
+		return sqlSession.selectList(NAMESPACE+"getBuyItemList", itemDTO);
 	}
 	
 	
 	//작성한 후기글 리스트
 	@Override
-	public List<ReviewDTO> getReviewList() throws Exception {
+	public List<ReviewDTO> getReviewList(ReviewDTO reviewDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getReviewList");
+		return sqlSession.selectList(NAMESPACE+"getReviewList", reviewDTO);
+	}
+	
+	@Override
+	public Long getMyPageCount(MyPagePager pager) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+"getMyPageCount", pager);
 	}
 	
 	

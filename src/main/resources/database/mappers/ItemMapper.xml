@@ -73,7 +73,7 @@
 		</select>
 		
 		<resultMap type="ItemDTO" id="getMainResult">
-		<id column="itemnum" property="itemNum"/>
+			<id column="itemnum" property="itemNum"/>
 				<result column="membernum" property="memberNum"/>
 				<result column="itemtitle" property="itemTitle"/>
 				<result column="itemcontents" property="itemContents"/>

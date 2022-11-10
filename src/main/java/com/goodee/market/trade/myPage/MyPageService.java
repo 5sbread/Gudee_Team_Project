@@ -11,32 +11,37 @@ import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.trade.sellItemList.SellItemListDTO;
+import com.goodee.market.util.MyPagePager;
 
 @Service
 public class MyPageService {
 	
 	@Autowired
 	private MyPageDAO myPageDAO;
-	@Autowired
-	private MyPageService myPageService;
-
-	public List<MemberDTO> getMyPage () throws Exception{
-		return myPageDAO.getMyPage();
+	
+	
+	public MemberDTO getMyPage (MemberDTO memberDTO) throws Exception{
+		return myPageDAO.getMyPage(memberDTO);
 	}
 	
 	//판매 리스트
-	public List<ItemDTO> getSellItemList () throws Exception{
-		return myPageDAO.getSellItemList();
+	public List<ItemDTO> getSellItemList (MyPagePager myPagePager) throws Exception{
+		Long totalCount = myPageDAO.getMyPageCount(myPagePager);
+		myPagePager.getNum(totalCount);
+		myPagePager.getRowNum();
+		
+		return myPageDAO.getSellItemList(myPagePager);
 	}
 	
 	//구매 리스트
-	public List<ItemDTO> getBuyItemList() throws Exception{
-		return myPageDAO.getBuyItemList();
+	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception{
+		return myPageDAO.getBuyItemList(itemDTO);
 	}
 	
 	//후기글 리스트
-	public List<ReviewDTO> getReviewList () throws Exception{
-		return myPageDAO.getReviewList();
+	public List<ReviewDTO> getReviewList (ReviewDTO reviewDTO) throws Exception{
+		return myPageDAO.getReviewList(reviewDTO);
 	}
+	
 
 }

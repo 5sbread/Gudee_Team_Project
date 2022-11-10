@@ -29,6 +29,7 @@
 <c:import url="../../template/trade/header.jsp"></c:import>
 
 <body>
+<input type="hidden" id="memberNum" value="${member.memberNum}" name="memberNum">
 	<div class="myPageMainBody">
 		<section class="mp-top">
 			<div class="mp-container">
@@ -42,23 +43,23 @@
 							<div class="sidebar-mp-mb">
 								<h4 class="sidebar-mb-title">마이페이지🎁</h4>
 								<div class="sidebar-mb-con">
-									<img class ="mb-pic" alt="" src="/resources/images/trade/product/product-5.jpg">
-									<h6 class="mp-mb-nk">닉네임 : 닉네임 : ${sessionScope.member.nickname}</h6>
-									<h6 class="mp-mb-nk">이름 : 닉네임 : ${sessionScope.member.name}</h6>
+									<img class ="mb-pic" alt="" src="/resources/upload/member/${member.memberFileDTO.fileName}">
+									<h6 class="mp-mb-nk">🤍 아이디 : ${sessionScope.member.id}</h6>
+									<h6 class="mp-mb-nk">🤍 닉네임 : ${sessionScope.member.nickname}</h6>
 								</div>	
-								<a class="mp-mb-h" href="#">회원정보 수정</a>
+								<a class="mp-mb-h" href="/member/infoUpdate?memberNum=${member.memberNum}">회원정보 수정</a>
 							</div>
 
 							<!-- 중고거래 -->
 							<div class="sidebar-mp">
 								<h4 class="sidebar-mp-title">중고거래📦</h4>
 								<ul class="mp-ul">
-									<li class="mp-li"><a href="/trade/sellitemlist" class="mp-a">내가 판매한 상품</a></li>
-									<li class="mp-li"><a href="/trade/buyitemlist" class="mp-a">내가 구매한 상품</a></li>
-									<li class="mp-li"><a href="/trade/reviewlist" class="mp-a">내가 작성한 후기</a></li>							
+									<li class="mp-li"><a href="/mypage/trade/sellitemlist?memberNum=${sessionScope.member.memberNum}" class="mp-a">내가 판매한 상품</a></li>
+									<li class="mp-li"><a href="/mypage/trade/buyitemlist?memberNum=${sessionScope.member.memberNum}" class="mp-a">내가 구매한 상품</a></li>
+									<li class="mp-li"><a href="/mypage/trade/reviewlist?memberNum=${sessionScope.member.memberNum}" class="mp-a">내가 작성한 후기</a></li>							
 								</ul>
 							</div>
-						</div>                    
+						</div>
 					</div>
 					<!-- sidebar end -->
 					

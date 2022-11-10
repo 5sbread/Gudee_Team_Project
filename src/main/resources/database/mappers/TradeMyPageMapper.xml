@@ -6,15 +6,32 @@
 <mapper namespace="com.goodee.market.trade.myPage.MyPageDAO">
 
 	<!-- 마이페이지 -->
-	<select id="getMyPage" resultMap="getMyPageResult" parameterType="MyPagePager">
-		SELECT IT.* FROM
-		    (SELECT * FROM ITEM I
-		        LEFT JOIN
-		        ITEMIMAGE IM
-		        ON I.ITEMNUM = IM.ITEMNUM
-		    )IT
-		WHERE MEMBERNUM = 62
+	<select id="getMyPage" resultMap="getMPResult" parameterType="MyPagePager">
+		SELECT * FROM
+				MEMBER M
+		        INNER JOIN
+		        MEMBERIMAGE MI
+		        ON M.MEMBERNUM = MI.MEMBERNUM
+		WHERE M.MEMBERNUM = #{memberNum}
 	</select>
+	
+	<resultMap type="MemberDTO" id="getMPResult">
+		<id column="MEMBERNUM" property="memberNum"/>
+		<result column="ID" property="id"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="NAME" property="name"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="EMAIL" property="email"/>
+		<result column="PHONE" property="phone"/>
+		<result column="MAIN_ADDRESS" property="main_address"/>
+		<result column="DETAIL_ADDRESS" property="detail_address"/>
+		<result column="POSTCODE" property="postcode"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<association property="memberFileDTO" javaType="MemberFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+		</association>
+	</resultMap>
 
 	<!-- 판매리스트 -->
 	<select id="getSellItemList" resultMap="getMyPageResult" parameterType="MyPagePager">	
@@ -24,19 +41,23 @@
 		        ITEMIMAGE IM
 		        ON I.ITEMNUM = IM.ITEMNUM
 		    )IT
-		WHERE MEMBERNUM = 62
+		WHERE MEMBERNUM = #{memberNum}
 	</select>
 	
 	
 	<!-- 구매리스트 -->
 	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="MyPagePager">
-		SELECT * FROM ITEM
-		    WHERE ITEMNUM
-		        =(SELECT ITEMNUM FROM BUYITEMLIST WHERE MEMBERNUM=62)
+		SELECT IT.* FROM
+		    (SELECT * FROM ITEM I
+		        LEFT JOIN
+		        ITEMIMAGE IM
+		        ON I.ITEMNUM = IM.ITEMNUM
+		    )IT
+		WHERE MEMBERNUM = #{memberNum}
 	</select>
 	
 	<resultMap type="ItemDTO" id="getMyPageResult">
-		<id column="itemnum" property="itemNum"/>
+			<id column="itemnum" property="itemNum"/>
 				<result column="membernum" property="memberNum"/>
 				<result column="itemtitle" property="itemTitle"/>
 				<result column="itemcontents" property="itemContents"/>
@@ -54,7 +75,7 @@
 	<!-- 후기리스트 -->
 	<select id="getReviewList" resultMap="getReviewResult" parameterType="MyPagePager">
 		SELECT * FROM REVIEW
-			WHERE MEMBERNUM = 62
+			WHERE MEMBERNUM = #{memberNum}
 	</select>
 	
 	<resultMap type="ReviewDTO" id="getReviewResult">
@@ -64,6 +85,10 @@
 			<result column="reviewhit" property="reviewHit"/>
 			<result column="reviewstar" property="reviewStar"/>
 	</resultMap>	
+	
+	<select id="getCount" resultType="Long" parameterType="MyPagePager">
+    			SELECT COUNT(ITEMNUM) FROM ITEM
+	</select>
 		
 	
 </mapper>	

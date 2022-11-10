@@ -7,6 +7,7 @@ import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.trade.sellItemList.SellItemListDTO;
+import com.goodee.market.util.MyPagePager;
 
 public interface MyPageInterface {
 	
@@ -15,15 +16,17 @@ public interface MyPageInterface {
 	//public List<E> getHeartList() throws Exception;
 	
 	//마이페이지 메인
-	public List<MemberDTO> getMyPage() throws Exception;
+	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception;
 	
 	//판매 리스트
-	public List<ItemDTO> getSellItemList() throws Exception;
+	public List<ItemDTO> getSellItemList(MyPagePager myPagePager) throws Exception;
 	
 	//구매 리스트
-	public List<ItemDTO> getBuyItemList() throws Exception;
+	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception;
 	
 	//작성한 후기글 리스트
-	public List<ReviewDTO> getReviewList() throws Exception;
+	public List<ReviewDTO> getReviewList(ReviewDTO reviewDTO) throws Exception;
+	
+	public Long getMyPageCount (MyPagePager pager) throws Exception;
 
 }

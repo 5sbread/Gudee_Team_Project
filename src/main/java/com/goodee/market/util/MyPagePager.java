@@ -13,21 +13,7 @@ public class MyPagePager {
 
 		private boolean pre;
 		private boolean next;
-		
 	
-		private Long memberNum;
-		
-		public Long getMemberNum() {
-			if(this.memberNum == null) {
-				this.memberNum = 0L;
-			}
-			return memberNum;
-		}
-
-		public void setMemberNum(Long memberNum) {
-			this.memberNum = memberNum;
-		}
-
 		public MyPagePager() {
 			this.perPage=6L;
 			this.perBlock=5L;
