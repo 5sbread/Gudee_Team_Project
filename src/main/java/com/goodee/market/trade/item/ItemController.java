@@ -117,6 +117,7 @@ public class ItemController{
 		mv.addObject("pager", pager);
 		
 		mv.setViewName("trade/category");
+		return mv;
 		
 	}
 	

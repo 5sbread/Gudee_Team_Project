@@ -16,7 +16,7 @@
 	</delete>
 
 	
-	<select id="getCommentListTotalCount" parameterType="CommentPager" resultType="Long">
+	<select id="getCommentListTotalCount" parameterType="ItemCommentPager" resultType="Long">
 		SELECT COUNT(NUM) FROM ITEMCOMMENT WHERE BOOKNUM=#{bookNum}
 	</select>
 
