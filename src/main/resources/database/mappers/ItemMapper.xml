@@ -45,6 +45,7 @@
 			                        left join
 			                        itemimage IM
 			                        on I.ITEMNUM = IM.ITEMNUM
+			                        ORDER BY I.ITEMNUM DESC
 			                    ) IT
 					    ) IT
 			    WHERE R BETWEEN #{startRow} and #{lastRow}

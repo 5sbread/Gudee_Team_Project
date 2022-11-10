@@ -43,8 +43,8 @@
 								<h4 class="sidebar-mb-title">마이페이지🎁</h4>
 								<div class="sidebar-mb-con">
 									<img class ="mb-pic" alt="" src="/resources/images/trade/product/product-5.jpg">
-									<h6 class="mp-mb-nk">닉네임 : </h6>
-									<h6 class="mp-mb-nk">이름 : </h6>
+									<h6 class="mp-mb-nk">닉네임 : 닉네임 : ${sessionScope.member.nickname}</h6>
+									<h6 class="mp-mb-nk">이름 : 닉네임 : ${sessionScope.member.name}</h6>
 								</div>	
 								<a class="mp-mb-h" href="#">회원정보 수정</a>
 							</div>
@@ -98,10 +98,10 @@
 									                </c:choose>
 								                </td>
 								                <td class="mp-etctext">
-						                            <a href="#" class="mp-etc">수정하기</a>
+						                            <a href="../../trade/review/delete?num=${reviewItem.itemNum}" class="mp-etc">수정하기</a>
 								                </td>
 					                            <td class="mp-etctext">
-						                            <a href="#" class="mp-etc">삭제하기</a>
+						                            <a href="../../trade/review/delete?num=${reviewItem.itemNum}" class="mp-etc">삭제하기</a>
 								                </td>
 						                    </tr>  
 							            </c:forEach>

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.goodee.market.member.MemberDTO;
 import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
@@ -19,6 +20,12 @@ public class MyPageDAO implements MyPageInterface{
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.goodee.market.trade.myPage.MyPageDAO.";
 	
+	
+	@Override
+	public List<MemberDTO> getMyPage() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE +"getMyPage");
+	}
 	
 		
 	//찜 목록

@@ -74,7 +74,7 @@
 							<a class="member-a" href="/trade/heartlist">❤️찜 바구니</a>
 						</li>
 						<li class="member-li">
-							<a class="member-a" href="/mypage/trade/main?memberNum=${myPage.memberNum}">🎁마이페이지</a>
+							<a class="member-a" href="/mypage/trade/main?memberNum=${sessionScope.member.memberNum}">🎁마이페이지</a>
 						</li>
 					</ul>
  				</c:when>

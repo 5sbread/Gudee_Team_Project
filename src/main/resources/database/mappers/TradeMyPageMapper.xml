@@ -5,36 +5,34 @@
 		    
 <mapper namespace="com.goodee.market.trade.myPage.MyPageDAO">
 
+	<!-- 마이페이지 -->
+	<select id="getMyPage" resultMap="getMyPageResult" parameterType="MyPagePager">
+		SELECT IT.* FROM
+		    (SELECT * FROM ITEM I
+		        LEFT JOIN
+		        ITEMIMAGE IM
+		        ON I.ITEMNUM = IM.ITEMNUM
+		    )IT
+		WHERE MEMBERNUM = 62
+	</select>
+
 	<!-- 판매리스트 -->
-	<select id="getSellItemList" resultMap="getMyPageResult" parameterType="ItemDTO">	
-<!-- 		SELECT I.ITEMTITLE, I.ITEMPRICE, M.MEMBERNICKNAME
-			FROM ITEM I
-	             INNER JOIN
-	             ITEMLIKE_MEMBER IM
-	             ON I.ITEMNUM= IM.ITEMNUM
-	             
-	             INNER JOIN
-	             MEMBER M
-	             ON M.MEMBERNUM= IM.MEMBERNUM
-            WHERE M.MEMBERNUM=#{memberNum}; -->
-            SELECT * FROM ITEM
-		    WHERE ITEMNUM
-		        =(SELECT ITEMNUM FROM SELLITEMLIST WHERE MEMBERNUM=#{memberNum})
+	<select id="getSellItemList" resultMap="getMyPageResult" parameterType="MyPagePager">	
+            SELECT IT.* FROM
+		    (SELECT * FROM ITEM I
+		        LEFT JOIN
+		        ITEMIMAGE IM
+		        ON I.ITEMNUM = IM.ITEMNUM
+		    )IT
+		WHERE MEMBERNUM = 62
 	</select>
 	
 	
 	<!-- 구매리스트 -->
-	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="ItemDTO">
+	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="MyPagePager">
 		SELECT * FROM ITEM
 		    WHERE ITEMNUM
-		        =(SELECT ITEMNUM FROM BUYITEMLIST WHERE MEMBERNUM=#{memberNum})
-	</select>
-	
-	
-	<!-- 후기리스트 -->
-	<select id="getReviewList" resultMap="getMyPageResult" parameterType="ItemDTO">
-		SELECT * FROM REVIEW
-			WHERE MEMBERNUM = #{memberNum}
+		        =(SELECT ITEMNUM FROM BUYITEMLIST WHERE MEMBERNUM=62)
 	</select>
 	
 	<resultMap type="ItemDTO" id="getMyPageResult">
@@ -52,5 +50,20 @@
 				<result column="oriname" property="oriName"/>
 				</collection>
 		</resultMap>
+	
+	<!-- 후기리스트 -->
+	<select id="getReviewList" resultMap="getReviewResult" parameterType="MyPagePager">
+		SELECT * FROM REVIEW
+			WHERE MEMBERNUM = 62
+	</select>
+	
+	<resultMap type="ReviewDTO" id="getReviewResult">
+		<id column="reviewnum" property="reviewNum"/>
+			<result column="reviewtitle" property="reviewTitle"/>
+			<result column="reviewcontent" property="reviewContent"/>
+			<result column="reviewhit" property="reviewHit"/>
+			<result column="reviewstar" property="reviewStar"/>
+	</resultMap>	
+		
 	
 </mapper>	

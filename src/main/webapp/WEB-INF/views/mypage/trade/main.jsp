@@ -33,7 +33,7 @@
 		<section class="mp-top">
 			<div class="mp-container">
 				<div class="mp-row">
-	
+				
 					<!-- 사이드바 -->
 					<div class="col-lg-3 col-md-5"> 
 						<div class="sidebar">
@@ -58,6 +58,8 @@
 									<li class="mp-li"><a href="/trade/reviewlist" class="mp-a">내가 작성한 후기</a></li>							
 								</ul>
 							</div>
+						</div>
+					</div>
 					<!-- sidebar end -->
 					
 					<!-- main -->
@@ -75,6 +77,8 @@
 						                <tr>
 						                    <th class="mp-title">제목</th>
 						                    <th class="mp-title">가격</th>
+						                    <th class="mp-title"></th>
+						                    <th class="mp-title"></th>
 						                </tr>
 						            </thead>
 						            <tbody class="mp-m-tbody">
@@ -88,10 +92,10 @@
 								                ${sellItem.itemPrice}
 								            </td>
 								            <td class="mp-etctext">
-						                    	<a href="#" class="mp-etc">수정하기</a>
+						                    	<a href="../../trade/update?num=${sellItem.itemNum}" class="mp-etc">수정하기</a>
 								            </td>
 					                        <td class="mp-etctext">
-						                    	<a href="#" class="mp-etc">삭제하기</a>
+						                    	<a href="../../trade/delete?num=${sellItem.itemNum}" class="mp-etc">삭제하기</a>
 								            </td>
 								        </tr>  
 							        	</c:forEach>
@@ -188,7 +192,7 @@
 						<!-- Review end -->
 					</div>			
 				</div>
-			</div>
+			</div>	
 		</section>
 	</div>
 

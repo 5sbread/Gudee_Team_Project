@@ -70,8 +70,8 @@
     <div class="mainItemBody">
 	    <div class="row">
 	         <div class="item-text">
-	             <a href="#" class="title-text">👍 인기 상품</a>
-	             <h6 class="sub-text">다른 사람들은 이 상품을 보고 있어요!</h6>
+	             <a href="#" class="title-text">👍 최신 상품</a>
+	             <h6 class="sub-text">방금 등록된 상품이에요!</h6>
 	         </div>
 	    </div>
 	    <div class="item-row">                    

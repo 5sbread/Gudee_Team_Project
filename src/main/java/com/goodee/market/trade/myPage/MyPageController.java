@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.goodee.market.meetingboard.MeetingBoardDTO;
 import com.goodee.market.member.MemberDTO;
 import com.goodee.market.member.MemberService;
 import com.goodee.market.trade.item.ItemDAO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
+import com.goodee.market.util.MyPagePager;
+import com.goodee.market.util.Pager;
 
 @Controller  //return 값은 내부 파일명
 @RequestMapping(value = "/mypage/trade/*")
@@ -30,12 +33,11 @@ public class MyPageController {
 	
 	
 	@GetMapping(value = "main")
-	public ModelAndView getMypage (HttpSession session) throws Exception{
+	public ModelAndView getMypage (HttpSession session, MyPagePager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberDTO = memberService.getMemberDetail(memberDTO);
-		mv.addObject("myPage", memberDTO);
+//		List<MemberDTO> mr = myPageService.getMyPage();
+//		mv.addObject("myPage", mr);
 		
 		List<ItemDTO> ar = myPageService.getSellItemList();
 		mv.addObject("sellitemlist", ar);
@@ -71,17 +73,6 @@ public class MyPageController {
 		System.out.println("중고 마이페이지 - buy List 접속");
 		return "mypage/trade/buyitemlist";
 	}
-	
-//	
-//	@GetMapping(value = "buyitemlist")
-//	public ModelAndView getBuyItemList () throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		System.out.println("중고 마이페이지 - buy List 접속");
-//		
-//		mv.addObject("getBuyItemList", myPageService.getBuyItemList());
-//		mv.setViewName("mypage/buyitemlist");
-//		return mv;
-//	}
 	
 	
 	@GetMapping(value = "reviewlist")

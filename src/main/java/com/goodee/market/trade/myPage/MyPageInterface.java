@@ -2,7 +2,7 @@ package com.goodee.market.trade.myPage;
 
 import java.util.List;
 
-
+import com.goodee.market.member.MemberDTO;
 import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
@@ -13,6 +13,9 @@ public interface MyPageInterface {
 	
 	//찜 리스트
 	//public List<E> getHeartList() throws Exception;
+	
+	//마이페이지 메인
+	public List<MemberDTO> getMyPage() throws Exception;
 	
 	//판매 리스트
 	public List<ItemDTO> getSellItemList() throws Exception;
