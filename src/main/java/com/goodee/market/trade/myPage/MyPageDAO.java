@@ -44,17 +44,17 @@ public class MyPageDAO implements MyPageInterface{
 
 	//구매 리스트
 	@Override
-	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception {
+	public List<ItemDTO> getBuyItemList(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getBuyItemList", itemDTO);
+		return sqlSession.selectList(NAMESPACE+"getBuyItemList", memberDTO);
 	}
 	
 	
 	//작성한 후기글 리스트
 	@Override
-	public List<ReviewDTO> getReviewList(ReviewDTO reviewDTO) throws Exception {
+	public List<ReviewDTO> getReviewList(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getReviewList", reviewDTO);
+		return sqlSession.selectList(NAMESPACE+"getReviewList", memberDTO);
 	}
 	
 	@Override

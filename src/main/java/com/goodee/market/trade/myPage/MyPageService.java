@@ -31,13 +31,13 @@ public class MyPageService {
 	}
 	
 	//구매 리스트
-	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception{
-		return myPageDAO.getBuyItemList(itemDTO);
+	public List<ItemDTO> getBuyItemList(MemberDTO memberDTO) throws Exception{
+		return myPageDAO.getBuyItemList(memberDTO);
 	}
 	
 	//후기글 리스트
-	public List<ReviewDTO> getReviewList (ReviewDTO reviewDTO) throws Exception{
-		return myPageDAO.getReviewList(reviewDTO);
+	public List<ReviewDTO> getReviewList (MemberDTO memberDTO) throws Exception{
+		return myPageDAO.getReviewList(memberDTO);
 	}
 	
 

@@ -22,10 +22,10 @@ public interface MyPageInterface {
 	public List<ItemDTO> getSellItemList(MemberDTO memberDTO) throws Exception;
 	
 	//구매 리스트
-	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception;
+	public List<ItemDTO> getBuyItemList(MemberDTO memberDTO) throws Exception;
 	
 	//작성한 후기글 리스트
-	public List<ReviewDTO> getReviewList(ReviewDTO reviewDTO) throws Exception;
+	public List<ReviewDTO> getReviewList(MemberDTO memberDTO) throws Exception;
 	
 	public Long getMyPageCount (MyPagePager pager) throws Exception;
 

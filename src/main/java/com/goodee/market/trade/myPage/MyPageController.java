@@ -35,24 +35,25 @@ public class MyPageController {
 	@GetMapping(value = "main")
 	public ModelAndView getMypage (HttpSession session, MyPagePager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		//사용자 정보
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		memberDTO = myPageService.getMyPage(memberDTO);
 		mv.addObject("member", memberDTO);
 		
-		ItemDTO itemDTO = new ItemDTO();
 		//판매목록
 		List<ItemDTO> ar = myPageService.getSellItemList(memberDTO);
 		mv.addObject("sellitemlist", ar);
 		//구매목록
-		ar = myPageService.getBuyItemList(itemDTO);
+		ar = myPageService.getBuyItemList(memberDTO);
 		mv.addObject("buyitemlist", ar);
 		//후기목록
 		ReviewDTO reviewDTO = new ReviewDTO();
-		List<ReviewDTO> ar2 = myPageService.getReviewList(reviewDTO);
+		List<ReviewDTO> ar2 = myPageService.getReviewList(memberDTO);
 		mv.addObject("reviewlist", ar2);
 		
-		System.out.println("중고 마이페이지");
+		mv.addObject("pager", pager);
+		//System.out.println("중고 마이페이지");
 		mv.setViewName("mypage/trade/main");
 		return mv;
 	}
@@ -70,32 +71,39 @@ public class MyPageController {
 		mv.addObject("member", memberDTO);
 		
 		List<ItemDTO> ar = myPageService.getSellItemList(memberDTO);
-		mv.addObject("sellitemlist", ar);
-		System.out.println("중고 마이페이지 - sell List 접속");
+		mv.addObject("list", ar);
+		
+		//System.out.println("중고 마이페이지 - sell List 접속");
 		return "mypage/trade/sellitemlist";
 	}
 	
 	
 	@GetMapping(value = "buyitemlist")
-	public String getBuyItemList (HttpSession session, MyPagePager pager) throws Exception{				
+	public String getBuyItemList (HttpSession session) throws Exception{				
 		ModelAndView mv = new ModelAndView();
-		ItemDTO itemDTO = new ItemDTO();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = myPageService.getMyPage(memberDTO);
+		mv.addObject("member", memberDTO);
 
-		List<ItemDTO> ar = myPageService.getBuyItemList(itemDTO);
-		mv.addObject("buyitemlist", ar);
-		System.out.println("중고 마이페이지 - buy List 접속");
+		List<ItemDTO> ar = myPageService.getBuyItemList(memberDTO);
+		mv.addObject("list", ar);
+		//System.out.println("중고 마이페이지 - buy List 접속");
 		return "mypage/trade/buyitemlist";
 	}
 	
 	
 	@GetMapping(value = "reviewlist")
-	public String getReviewList (HttpSession session, MyPagePager pager) throws Exception{				
+	public String getReviewList (HttpSession session) throws Exception{				
 		ModelAndView mv = new ModelAndView();
-		ReviewDTO reviewDTO = new ReviewDTO();
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = myPageService.getMyPage(memberDTO);
+		mv.addObject("member", memberDTO);
 
-		List<ReviewDTO> ar = myPageService.getReviewList(reviewDTO);
-		mv.addObject("reviewlist", ar);
-		System.out.println("중고 마이페이지 - review List 접속");
+		List<ReviewDTO> ar = myPageService.getReviewList(memberDTO);
+		mv.addObject("list", ar);
+		//System.out.println("중고 마이페이지 - review List 접속");
 		return "mypage/trade/reviewlist";
 	}
 

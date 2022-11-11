@@ -100,7 +100,7 @@
                                     <nav aria-label="Page navigation category">
                                         <ul class="pagination">
 	                                        <li class="page-item ${pager.pre ? '' : 'disabled' }">
-										  		<a class="page-link" href="./list?page=${pager.startNum - 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Previous">
+										  		<a class="page-link" href="./category?page=${pager.startNum - 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Previous">
 												   <span aria-hidden="true">&laquo;</span>
 												</a>
 										  	</li>

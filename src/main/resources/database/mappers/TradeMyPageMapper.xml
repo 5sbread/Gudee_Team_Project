@@ -7,12 +7,17 @@
 
 	<!-- 마이페이지 -->
 	<select id="getMyPage" resultMap="getMPResult" parameterType="MyPagePager">
-		SELECT * FROM
-				MEMBER M
-		        INNER JOIN
-		        MEMBERIMAGE MI
-		        ON M.MEMBERNUM = MI.MEMBERNUM
-		WHERE M.MEMBERNUM = #{memberNum}
+		select MP.* from
+			(SELECT ROWNUM R, MM.* FROM
+					(SELECT * FROM
+						MEMBER M
+				        INNER JOIN
+				        MEMBERIMAGE MI
+				        ON M.MEMBERNUM = MI.MEMBERNUM
+				     )MM
+			WHERE M.MEMBERNUM = #{memberNum}
+			) MP
+		where r between #{startRow} and #{lastRow}
 	</select>
 	
 	<resultMap type="MemberDTO" id="getMPResult">
@@ -44,37 +49,9 @@
 		WHERE MEMBERNUM = #{memberNum}
 	</select>
 	
-	<!-- <resultMap type="MemberDTO" id="getMSResult">
-		<id column="MEMBERNUM" property="memberNum"/>
-		<result column="ID" property="id"/>
-		<result column="PASSWORD" property="password"/>
-		<result column="NAME" property="name"/>
-		<result column="NICKNAME" property="nickname"/>
-		<result column="EMAIL" property="email"/>
-		<result column="PHONE" property="phone"/>
-		<result column="MAIN_ADDRESS" property="main_address"/>
-		<result column="DETAIL_ADDRESS" property="detail_address"/>
-		<result column="POSTCODE" property="postcode"/>
-		<result column="BIRTHDAY" property="birthday"/>
-		<association property="memberFileDTO" javaType="MemberFileDTO">
-			<id column="FILENUM" property="fileNum"/>
-			<result column="FILENAME" property="fileName"/>
-		</association>
-		<collection property="itemDTOs" javaType="List" ofType="ItemDTO">
-			<id column="itemNum" property="itemNum"/>
-			<result column="memberNum" property="memberNum"/>
-			<result column="itemTitle" property="itemTitle"/>
-			<result column="itemContents" property="itemContents"/>
-			<result column="itemCategory" property="itemCategory"/>
-			<result column="itemPrice" property="itemPrice"/>
-			<result column="itemDueDate" property="itemDueDate"/>
-			<result column="itemStatus" property="itemStatus"/>
-		</collection>
-	</resultMap> -->
-	
 	
 	<!-- 구매리스트 -->
-	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="MyPagePager">
+	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="ItemDTO">
 		SELECT IT.* FROM
 		    (SELECT * FROM ITEM I
 		        LEFT JOIN
@@ -101,7 +78,7 @@
 		</resultMap>
 	
 	<!-- 후기리스트 -->
-	<select id="getReviewList" resultMap="getReviewResult" parameterType="MyPagePager">
+	<select id="getReviewList" resultMap="getReviewResult" parameterType="ReviewDTO">
 		SELECT * FROM REVIEW
 			WHERE MEMBERNUM = #{memberNum}
 	</select>

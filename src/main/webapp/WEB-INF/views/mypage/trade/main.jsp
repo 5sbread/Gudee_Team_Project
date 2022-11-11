@@ -71,7 +71,6 @@
 						<div class="mp-main">
 							<div class="mp-m-main">
 								<h6 class="mp-m-title">내가 판매한 상품</h6>
-								<h6 class="mp-more-h"><a class="mp-more-a" href="sellitemlist">더보기</a></h6>
 							</div>
 							<div class="mp-table">
 						        <table>
@@ -104,6 +103,34 @@
 						            </tbody>
 						        </table>
 						    </div>
+						    <!-- 페이지 이동 -->        
+		                    <div class="product-pagination">
+		                        <div class="col-lg-12">
+		                            <div>http://localhost:8080/mypage/trade/main?memberNum=81
+		                                <div class="cate-page">
+		                                    <nav aria-label="Page navigation category">
+		                                        <ul class="pagination">
+			                                        <li class="page-item ${pager.pre ? '' : 'disabled' }">
+												  		<a class="page-link" href="/mypage/trade/main?memberNum=${sessionScope.member.memberNum}&page=${pager.startNum - 1 }" aria-label="Previous">
+														   <span aria-hidden="true">&laquo;</span>
+														</a>
+												  	</li>
+		                                            <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+		                                                <li class="page-item">
+		                                                    <a class="page-link" href="./category?page=${i}">${i}</a>
+		                                                </li>
+		                                            </c:forEach>
+		                                            <li class="page-item ${pager.next ? '' : 'disabled' }">
+													   <a class="page-link" href="./category?page=${pager.lastNum + 1 }" aria-label="Next">
+													      <span aria-hidden="true">&raquo;</span>
+													   </a>
+													</li>
+		                                        </ul>
+		                                    </nav>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
 						</div>
 						
 						<div class="mp-air"></div>
@@ -111,7 +138,6 @@
 						<div class="mp-main">
 							<div class="mp-m-main">
 								<h6 class="mp-m-title">내가 구매한 상품</h6>
-								<h6 class="mp-more-h"><a class="mp-more-a" href="buyitemlist">더보기</a></h6>
 							</div>
 							<div class="mp-table">
 					            <table>
@@ -134,7 +160,7 @@
 								                ${buyItem.itemPrice}
 				                            </td>
 											<td>
-							                    ${buyItem.nickName}
+							                    <%-- ${buyItem.nickName} --%>
 				                            </td>
 							                <td class="mp-etctext">
 						 	                   <a href="#" class="mp-etc">리뷰작성</a>
@@ -144,6 +170,33 @@
 						            </tbody>
 						        </table>
 						    </div>
+						    <!-- 페이지 이동 -->        
+		                    <div class="product-pagination">
+		                        <div class="col-lg-12">
+		                            <div>
+		                                <div class="cate-page">
+		                                    <nav aria-label="Page navigation category">
+		                                        <ul class="pagination">
+			                                        <li class="page-item ${pager.pre ? '' : 'disabled' }">
+												  		<a class="page-link" href="./list?page=${pager.startNum - 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Previous">
+														   <span aria-hidden="true">&laquo;</span>
+														</a>
+												  	</li>
+		                                            <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+		                                                <li class="page-item">
+		                                                    <a class="page-link" href="./category?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}">${i}</a>
+		                                                </li>
+		                                            </c:forEach>
+		                                            <li class="page-item ${pager.next ? '' : 'disabled' }">
+													   <a class="page-link" href="./category?page=${pager.lastNum + 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Next">
+													      <span aria-hidden="true">&raquo;</span>
+													   </a>
+													</li>
+		                                        </ul>
+		                                    </nav>
+		                                </div>
+		                            </div>
+		                        </div>
 						</div>
 						
 						<div class="mp-air"></div>
@@ -151,7 +204,6 @@
 						<div class="mp-main">
 							<div class="mp-m-main">
 								<h6 class="mp-m-title">내가 작성한 후기</h6>
-								<h6 class="mp-more-h"><a class="mp-more-a" href="reviewlist">더보기</a></h6>
 							</div>
 							<div class="mp-table">
 						        <table>
@@ -190,6 +242,33 @@
 						            </tbody>
 						        </table>
 						    </div>	
+						    <!-- 페이지 이동 -->        
+		                    <div class="product-pagination">
+		                        <div class="col-lg-12">
+		                            <div>
+		                                <div class="cate-page">
+		                                    <nav aria-label="Page navigation category">
+		                                        <ul class="pagination">
+			                                        <li class="page-item ${pager.pre ? '' : 'disabled' }">
+												  		<a class="page-link" href="./list?page=${pager.startNum - 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Previous">
+														   <span aria-hidden="true">&laquo;</span>
+														</a>
+												  	</li>
+		                                            <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+		                                                <li class="page-item">
+		                                                    <a class="page-link" href="./category?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}">${i}</a>
+		                                                </li>
+		                                            </c:forEach>
+		                                            <li class="page-item ${pager.next ? '' : 'disabled' }">
+													   <a class="page-link" href="./category?page=${pager.lastNum + 1 }&filter=${pager.filter}&select=${pager.select}&search=${pager.search}" aria-label="Next">
+													      <span aria-hidden="true">&raquo;</span>
+													   </a>
+													</li>
+		                                        </ul>
+		                                    </nav>
+		                                </div>
+		                            </div>
+		                        </div>
 						</div>
 						<!-- Review end -->
 					</div>

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.goodee.market.meetingboard.MeetingBoardDTO;
 import com.goodee.market.meetingboard.like.MeetingLikeDTO;
 import com.goodee.market.trade.item.ItemDTO;
+import com.goodee.market.trade.review.ReviewDTO;
 
 public class MemberDTO {
 	
@@ -32,6 +33,7 @@ public class MemberDTO {
 	private List<ReportDTO> reportDTOs;
 	
 	private List<ItemDTO> itemDTOs;
+	private List<ReviewDTO> reviewDTOs;
 	
 	public Long getMemberNum() {
 		return memberNum;
