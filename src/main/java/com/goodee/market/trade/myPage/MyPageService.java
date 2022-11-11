@@ -25,12 +25,9 @@ public class MyPageService {
 	}
 	
 	//판매 리스트
-	public List<ItemDTO> getSellItemList (MyPagePager myPagePager) throws Exception{
-		Long totalCount = myPageDAO.getMyPageCount(myPagePager);
-		myPagePager.getNum(totalCount);
-		myPagePager.getRowNum();
+	public List<ItemDTO> getSellItemList (MemberDTO memberDTO) throws Exception{
 		
-		return myPageDAO.getSellItemList(myPagePager);
+		return myPageDAO.getSellItemList(memberDTO);
 	}
 	
 	//구매 리스트

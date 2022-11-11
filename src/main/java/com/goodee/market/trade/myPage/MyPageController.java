@@ -42,7 +42,7 @@ public class MyPageController {
 		
 		ItemDTO itemDTO = new ItemDTO();
 		//판매목록
-		List<ItemDTO> ar = myPageService.getSellItemList(pager);
+		List<ItemDTO> ar = myPageService.getSellItemList(memberDTO);
 		mv.addObject("sellitemlist", ar);
 		//구매목록
 		ar = myPageService.getBuyItemList(itemDTO);
@@ -62,11 +62,14 @@ public class MyPageController {
 	//@RequestMapping(value = "sellitemlist", method = RequestMethod.GET)
 	// 두개 같은 의미 | ↑ 줄이면 ↓
 	@GetMapping(value = "sellitemlist")
-	public String getSellItemList (HttpSession session, MyPagePager pager) throws Exception{				
+	public String getSellItemList (HttpSession session) throws Exception{				
 		ModelAndView mv = new ModelAndView();
-		ItemDTO itemDTO = new ItemDTO();
 		
-		List<ItemDTO> ar = myPageService.getSellItemList(pager);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = myPageService.getMyPage(memberDTO);
+		mv.addObject("member", memberDTO);
+		
+		List<ItemDTO> ar = myPageService.getSellItemList(memberDTO);
 		mv.addObject("sellitemlist", ar);
 		System.out.println("중고 마이페이지 - sell List 접속");
 		return "mypage/trade/sellitemlist";

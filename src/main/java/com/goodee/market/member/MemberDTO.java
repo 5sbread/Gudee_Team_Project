@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.goodee.market.meetingboard.MeetingBoardDTO;
 import com.goodee.market.meetingboard.like.MeetingLikeDTO;
+import com.goodee.market.trade.item.ItemDTO;
 
 public class MemberDTO {
 	
@@ -29,6 +30,8 @@ public class MemberDTO {
 	private List<MeetingBoardDTO> meetingBoardDTOs;
 	private List<RoleDTO> roleDTOs;
 	private List<ReportDTO> reportDTOs;
+	
+	private List<ItemDTO> itemDTOs;
 	
 	public Long getMemberNum() {
 		return memberNum;
@@ -139,5 +142,13 @@ public class MemberDTO {
 	public void setReportDTOs(List<ReportDTO> reportDTOs) {
 		this.reportDTOs = reportDTOs;
 	}
+	public List<ItemDTO> getItemDTOs() {
+		return itemDTOs;
+	}
+	public void setItemDTOs(List<ItemDTO> itemDTOs) {
+		this.itemDTOs = itemDTOs;
+	}
+	
+	
 	
 }

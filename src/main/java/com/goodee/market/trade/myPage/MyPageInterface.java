@@ -19,7 +19,7 @@ public interface MyPageInterface {
 	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception;
 	
 	//판매 리스트
-	public List<ItemDTO> getSellItemList(MyPagePager myPagePager) throws Exception;
+	public List<ItemDTO> getSellItemList(MemberDTO memberDTO) throws Exception;
 	
 	//구매 리스트
 	public List<ItemDTO> getBuyItemList(ItemDTO itemDTO) throws Exception;

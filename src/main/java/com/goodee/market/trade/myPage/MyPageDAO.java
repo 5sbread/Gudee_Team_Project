@@ -34,9 +34,9 @@ public class MyPageDAO implements MyPageInterface{
 	
 	//판매 리스트
 	@Override
-	public List<ItemDTO> getSellItemList(MyPagePager myPagePager) throws Exception {
+	public List<ItemDTO> getSellItemList(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE +"getSellItemList", myPagePager);
+		return sqlSession.selectList(NAMESPACE +"getSellItemList", memberDTO);
 	}
 	
 	
