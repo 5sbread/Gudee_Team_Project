@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.goodee.market.util.FileManager;
 //import com.goodee.market.util.FileManager;
 import com.goodee.market.util.Pager;
+import com.goodee.market.util.ReviewPager;
 
 @Service
 public class ReviewService {
@@ -23,7 +24,7 @@ public class ReviewService {
 	
 	
 	//리뷰 메인
-	public List<ReviewDTO> getReviewMain (Pager pager) throws Exception{
+	public List<ReviewDTO> getReviewMain (ReviewPager pager) throws Exception{
 		Long totalCount = reviewDAO.getCount(pager);
 		pager.getNum(totalCount);
 		pager.getRowNum();

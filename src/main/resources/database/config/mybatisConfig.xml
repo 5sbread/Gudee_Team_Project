@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.goodee.market.trade.sellItemList.SellItemListDTO" alias="SellItemListDTO"/>
 		<typeAlias type="com.goodee.market.trade.buyItemList.BuyItemListDTO" alias="BuyItemListDTO"/>
 		<typeAlias type="com.goodee.market.trade.review.ReviewDTO" alias="ReviewDTO"/>
+		<typeAlias type="com.goodee.market.trade.review.ReviewImageDTO" alias="ReviewImageDTO"/>
 		<typeAlias type="com.goodee.market.trade.tradingItem.TradingItemDTO" alias="TradingItemDTO"/>
 		<typeAlias type="com.goodee.market.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.goodee.market.member.MemberFileDTO" alias="MemberFileDTO"/>
@@ -35,7 +36,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 		<typeAlias type="com.goodee.market.util.MyPagePager" alias="MyPagePager"/>
 		<typeAlias type="com.goodee.market.util.MainPager" alias="MainPager"/>
-				<typeAlias type="com.goodee.market.util.Pager" alias="Pager"/>
+		<typeAlias type="com.goodee.market.util.Pager" alias="Pager"/>
+		<typeAlias type="com.goodee.market.util.ReviewPager" alias="ReviewPager"/>
 		
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Integer" alias="Integer"/>

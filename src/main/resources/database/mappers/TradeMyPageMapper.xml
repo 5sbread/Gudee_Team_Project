@@ -7,17 +7,12 @@
 
 	<!-- 마이페이지 -->
 	<select id="getMyPage" resultMap="getMPResult" parameterType="MyPagePager">
-		select MP.* from
-			(SELECT ROWNUM R, MM.* FROM
-					(SELECT * FROM
-						MEMBER M
-				        INNER JOIN
-				        MEMBERIMAGE MI
-				        ON M.MEMBERNUM = MI.MEMBERNUM
-				     )MM
-			WHERE M.MEMBERNUM = #{memberNum}
-			) MP
-		where r between #{startRow} and #{lastRow}
+		SELECT ROWNUM R, M.*, MI.*
+			FROM MEMBER M
+            INNER JOIN
+               MEMBERIMAGE MI
+        	ON M.MEMBERNUM = MI.MEMBERNUM
+		WHERE M.MEMBERNUM = #{memberNum}
 	</select>
 	
 	<resultMap type="MemberDTO" id="getMPResult">

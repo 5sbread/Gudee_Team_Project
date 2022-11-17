@@ -1,6 +1,6 @@
 package com.goodee.market.util;
 
-public class MyPagePager {
+public class ReviewPager {
 	
 		private Long page;
 		private Long startNum;
@@ -14,20 +14,24 @@ public class MyPagePager {
 		private boolean pre;
 		private boolean next;
 		
+	
 		//검색어
 		private String search;
-				
+		
 		//제목|카테고리
 		private String select;
 
 		//카테고리
 		private String filter;
-				
-			
-				
 		
-	
-		public MyPagePager() {
+		//정렬
+		private String sort;
+		
+		//별점
+		private Long star;
+		
+		
+		public ReviewPager() {
 			this.perPage=6L;
 			this.perBlock=5L;
 		}
@@ -155,7 +159,7 @@ public class MyPagePager {
 		public void setNext(boolean next) {
 			this.next = next;
 		}
-		
+
 		public String getSearch() {
 			if(this.search==null) {
 				this.search="";
@@ -189,6 +193,30 @@ public class MyPagePager {
 		public void setSelect(String select) {
 			this.select = select;
 		}
+
+		public String getSort() {
+			if(this.sort==null) {
+				this.sort="";
+			}
+			return sort;
+		}
+
+		public void setSort(String sort) {
+			this.sort = sort;
+		}
+
+		public Long getStar() {
+			if(this.star==null) {
+				this.star=0L;
+			}
+			return star;
+		}
+
+		public void setStar(Long star) {
+			this.star = star;
+		}
+		
+		
 
 
 		

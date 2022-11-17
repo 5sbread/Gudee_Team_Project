@@ -1,8 +1,10 @@
 package com.goodee.market.trade.review;
 
+import java.util.List;
+
 import com.goodee.market.trade.item.ItemDTO;
 
-public class ReviewDTO extends ItemDTO{
+public class ReviewDTO{
 	
 	//itemNum
 	//memberNum
@@ -12,6 +14,9 @@ public class ReviewDTO extends ItemDTO{
 	private String reviewContent;
 	private Integer reviewHit;
 	private Integer reviewStar;
+	private String reviewCategory;
+	
+	private List<ReviewImageDTO> reviewImageDTOs;
 	
 //-----------------------------------------------	
 	public Long getReviewNum() {
@@ -45,6 +50,22 @@ public class ReviewDTO extends ItemDTO{
 	public void setReviewStar(Integer reviewStar) {
 		this.reviewStar = reviewStar;
 	}
+	public List<ReviewImageDTO> getReviewImageDTOs() {
+		return reviewImageDTOs;
+	}
+	public void setReviewImageDTOs(List<ReviewImageDTO> reviewImageDTOs) {
+		this.reviewImageDTOs = reviewImageDTOs;
+	}
+	public String getReviewCategory() {
+		return reviewCategory;
+	}
+	public void setReviewCategory(String reviewCategory) {
+		this.reviewCategory = reviewCategory;
+	}
+	
+	
+	
+	
 	
 	
 	

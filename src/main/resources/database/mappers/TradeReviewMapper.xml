@@ -5,17 +5,53 @@
 
 <mapper namespace="com.goodee.market.trade.review.ReviewDAO">
     
+    <sql id="select">
+		WHERE
+			<choose>
+				<when test="select == 'title'">RV.REVIEWTITLE</when>
+				<otherwise>RV.REVIEWCONTENT</otherwise>
+			</choose>
+		LIKE '%'||#{select}||'%'
+	</sql>
+	
+	<sql id="sort">
+		ORDER BY
+		<choose>
+			<when test="sort == 'RECENT_SORT'">RV.REVIEWNUM DESC</when>
+			<when test="sort == 'STAR_DESC_SORT'">RV.REVIEWSTAR DESC</when>
+			<otherwise>RV.REVIEWSTAR ASC</otherwise>
+		</choose>
+	</sql>
+
 	<!-- 메인 -->
-    <select id="getReviewMain" resultType="ReviewDTO" parameterType="Pager">
-    	SELECT * FROM
-	    (
-	        SELECT ROWNUM R, V.* FROM
-		    	(SELECT * FROM REVIEW
-		           
-		        ORDER BY REVIEWNUM DESC) V
-		)
+    <select id="getReviewMain" resultMap="getReviewResult" parameterType="ReviewPager">
+    	SELECT RV.* FROM
+			(SELECT ROWNUM R, RV.* FROM
+				(SELECT * FROM REVIEW RV
+			     	LEFT JOIN REVIEWIMAGE RM
+			        ON RV.REVIEWNUM = RM.REVIEWNUM
+						<include refid="select"></include>
+						AND RV.REVIEWCATEGORY LIKE '%'||#{filter}||'%'
+						AND RV.REVIEWSTAR <![CDATA[<]]>= #{star}
+					<include refid="sort"></include>
+				) RV
+			)RV
 		WHERE R BETWEEN #{startRow} and #{lastRow}
     </select>
+    
+    <resultMap type="ReviewDTO" id="getReviewResult">
+    	<id column="reviewNum" property="reviewNum"/>
+    		<result column="reviewTitle" property="reviewTitle"/>
+    		<result column="reviewContent" property="reviewContent"/>
+    		<result column="reviewCategory" property="reviewCategory"/>
+    		<result column="reviewHit" property="reviewHit"/>
+    		<result column="reviewStar" property="reviewStar"/>
+    		<collection property="reviewImageDTOs" javaType="List" ofType="ReviewImageDTO">
+    			<id column="filenum" property="fileNum"/>
+    			<result column="filename" property="fileName"/>
+				<result column="oriname" property="oriName"/>
+    		</collection>
+    </resultMap>
     
 <!-- 
 	파일 추가
@@ -26,7 +62,7 @@
  -->    		
     
     <!-- 페이지 -->
-    <select id="getCount" resultType="Long" parameterType="Pager">
+    <select id="getCount" resultType="Long" parameterType="ReviewPager">
     		SELECT COUNT(ITEMNUM) FROM ITEM
 	</select>
     		

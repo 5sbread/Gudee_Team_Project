@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.market.util.Pager;
+import com.goodee.market.util.ReviewPager;
 
 @Controller
 @RequestMapping("/trade/review/*")
@@ -24,9 +25,7 @@ public class ReviewController {
 	
 	//리뷰 메인
 	@GetMapping(value = "main")
-	public ModelAndView getReviewMain( Pager pager)throws Exception {
-		System.out.println("review");
-		
+	public ModelAndView getReviewMain(ReviewPager pager)throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<ReviewDTO> ar = reviewService.getReviewMain(pager);
 	
@@ -80,7 +79,7 @@ public class ReviewController {
 	@PostMapping(value="update")
 	public String setUpdate(ReviewDTO reviewDTO)throws Exception {
 		int result = reviewService.setUpdate(reviewDTO);
-	return "redirect:./detail?reviewNum="+reviewDTO.getItemNum();
+	return "redirect:./detail?reviewNum="+reviewDTO.getReviewNum();
 	}
 	
 	

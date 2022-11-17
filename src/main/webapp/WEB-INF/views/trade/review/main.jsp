@@ -44,13 +44,24 @@
                         <div class="sidebar-cate">
                             <h4 class="sidebar-cate-title">전체 카테고리</h4>
                             <ul class="scate-ul">
-                            	<li class="scate-li"><a href="/trade/review" class="scate-a">의류</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">식품류</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">도서/문구</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">뷰티/미용</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">생활/디지털</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">반려동물 용품</a></li>
-	                            <li class="scate-li"><a href="/trade/review" class="scate-a">가구/인테리어</a></li>							
+                            	<li class="scate-li"><a href="/trade/review/main?page=${i}&filter=의류&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">의류</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">식품류</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=도서/문구&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">도서/문구</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=뷰티/미용&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">뷰티/미용</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=생활/디지털&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">생활/디지털</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=반려동물용품&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">반려동물 용품</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=가구/인테리어&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=${pager.star}" class="scate-a">가구/인테리어</a></li>							
+                            </ul>
+                        </div>
+                        
+                        <div class="sidebar-cate">
+                            <h4 class="sidebar-cate-title">별점 순</h4>
+                            <ul class="scate-ul">
+                            	<li class="scate-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=1" class="scate-a">⭐ 이하</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=2" class="scate-a">⭐⭐ 이하</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=3" class="scate-a">⭐⭐⭐ 이하</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=4" class="scate-a">⭐⭐⭐⭐ 이하</a></li>
+	                            <li class="scate-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=${pager.sort}&star=5" class="scate-a">⭐⭐⭐⭐⭐ 이하</a></li>				
                             </ul>
                         </div>
                     </div>                    
@@ -64,9 +75,9 @@
                         <div class="sort-row">
                             <div class="filter-sort">
                                 <ul>
-                                    <li class="filter-li"><a href="/trade/category/new" class="filter-a">최신순</a></li>
-                                    <li class="filter-li"><a href="/trade/category/high" class="filter-a">높은 별점순</a></li>
-                                    <li class="filter-li"><a href="/trade/category/low" class="filter-a">낮은 별점순</a></li>
+                                    <li class="filter-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=RECENT_SORT&star=${pager.star}" class="filter-a">최신순</a></li>
+                                    <li class="filter-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=STAR_DESC_SORT&star=${pager.star}" class="filter-a">높은 별점순</a></li>
+                                    <li class="filter-li"><a href="/trade/review/main?page=${i}&filter=${pager.filter}&select=${pager.select}&search=${pager.search}&sort=STAR_ASC_SORT&star=${pager.star}" class="filter-a">낮은 별점순</a></li>
                                 </ul>
                             </div>
                         </div>

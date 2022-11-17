@@ -6,13 +6,14 @@ import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
 import com.goodee.market.util.Pager;
+import com.goodee.market.util.ReviewPager;
 
 public interface ReviewInterface {
 
-	public List<ReviewDTO> getReviewMain(Pager pager) throws Exception;
+	public List<ReviewDTO> getReviewMain(ReviewPager pager) throws Exception;
 	
 	
-	public Long getCount(Pager pager) throws Exception;
+	public Long getCount(ReviewPager pager) throws Exception;
 
 	public ReviewDTO getDetail(ReviewDTO reviewDTO) throws Exception;
 	

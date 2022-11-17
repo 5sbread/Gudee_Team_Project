@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.market.util.Pager;
+import com.goodee.market.util.ReviewPager;
 
 @Repository
 public class ReviewDAO implements ReviewInterface {
@@ -20,13 +21,13 @@ public class ReviewDAO implements ReviewInterface {
 	
 	
 	@Override
-	public List<ReviewDTO> getReviewMain(Pager pager) throws Exception {
+	public List<ReviewDTO> getReviewMain(ReviewPager pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"getReviewMain", pager);
 	}
 
 
 	@Override
-	public Long getCount(Pager pager) throws Exception {
+	public Long getCount(ReviewPager pager) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 
