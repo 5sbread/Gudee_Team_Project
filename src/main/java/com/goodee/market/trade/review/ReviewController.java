@@ -2,6 +2,7 @@ package com.goodee.market.trade.review;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +78,8 @@ public class ReviewController {
 	
 	
 	@PostMapping(value="update")
-	public String setUpdate(ReviewDTO reviewDTO)throws Exception {
-		int result = reviewService.setUpdate(reviewDTO);
+	public String setUpdate(ReviewDTO reviewDTO, MultipartFile [] files, ServletContext servletContext)throws Exception {
+		int result = reviewService.setUpdate(reviewDTO, files, servletContext);
 	return "redirect:./detail?reviewNum="+reviewDTO.getReviewNum();
 	}
 	

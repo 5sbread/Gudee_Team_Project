@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.market.trade.item.ItemImageDTO;
 import com.goodee.market.util.FileManager;
 //import com.goodee.market.util.FileManager;
 import com.goodee.market.util.Pager;
@@ -60,8 +61,25 @@ public class ReviewService {
 	
 	
 	//수정
-	public int setUpdate(ReviewDTO reviewDTO)throws Exception {
-		return reviewDAO.setUpdate(reviewDTO);
+	public int setUpdate(ReviewDTO reviewDTO, MultipartFile [] files, ServletContext servletContext)throws Exception {
+		int result= reviewDAO.setUpdate(reviewDTO, files, servletContext);
+		String path="resources/upload/item";
+
+		if(result<1) {
+			return result;
+		}
+		for (MultipartFile multipartFile: files) {
+			if(multipartFile.isEmpty()) {
+				continue;
+			}	
+			String fileName= fileManager.saveFile(path, servletContext, multipartFile);
+			ReviewImageDTO reviewImageDTO = new ReviewImageDTO();
+			reviewImageDTO.setFileName(fileName);
+			reviewImageDTO.setOriName(multipartFile.getOriginalFilename());
+			reviewImageDTO.setReviewNum(reviewDTO.getItemNum());
+			reviewDAO.setAddFile(reviewImageDTO);
+			}
+		return result;
 	}
 	
 	

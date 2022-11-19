@@ -45,7 +45,7 @@ public class ReviewDAO implements ReviewInterface {
 
 
 	@Override
-	public int setUpdate(ReviewDTO reviewDTO) throws Exception {
+	public int setUpdate(ReviewDTO reviewDTO, MultipartFile [] files, ServletContext servletContext) throws Exception {
 		return sqlSession.update(NAMESPACE+"setUpdate", reviewDTO);
 	}
 
@@ -60,6 +60,7 @@ public class ReviewDAO implements ReviewInterface {
 	public int setAddFile(ReviewImageDTO reviewImageDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setAddFile", reviewImageDTO);
 	}
+
 	
 	
 

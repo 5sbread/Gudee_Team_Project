@@ -21,7 +21,7 @@ public interface ReviewInterface {
 	
 	public int setAddFile(ReviewImageDTO reviewImageDTO)throws Exception;
 	
-	public int setUpdate(ReviewDTO reviewDTO) throws Exception;
+	public int setUpdate(ReviewDTO reviewDTO, MultipartFile [] files, ServletContext servletContext) throws Exception;
 	
 	public int setDelete(ReviewDTO reviewDTO) throws Exception;
 	

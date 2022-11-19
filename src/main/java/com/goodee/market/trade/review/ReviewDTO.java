@@ -6,9 +6,8 @@ import com.goodee.market.trade.item.ItemDTO;
 
 public class ReviewDTO{
 	
-	//itemNum
-	//memberNum
-	
+	private Long itemNum;
+	private Long memberNum;
 	private Long reviewNum;
 	private String reviewTitle;
 	private String reviewContent;
@@ -17,6 +16,7 @@ public class ReviewDTO{
 	private String reviewCategory;
 	
 	private List<ReviewImageDTO> reviewImageDTOs;
+	private List<ItemDTO> itemDTOs;
 	
 //-----------------------------------------------	
 	public Long getReviewNum() {
@@ -62,6 +62,28 @@ public class ReviewDTO{
 	public void setReviewCategory(String reviewCategory) {
 		this.reviewCategory = reviewCategory;
 	}
+	public List<ItemDTO> getItemDTOs() {
+		return itemDTOs;
+	}
+	public void setItemDTOs(List<ItemDTO> itemDTOs) {
+		this.itemDTOs = itemDTOs;
+	}
+	public Long getItemNum() {
+		return itemNum;
+	}
+	public void setItemNum(Long itemNum) {
+		this.itemNum = itemNum;
+	}
+	public Long getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(Long memberNum) {
+		this.memberNum = memberNum;
+	}
+	
+	
+	
+	
 	
 	
 	
