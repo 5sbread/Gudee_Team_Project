@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.goodee.market.member.MemberDTO;
+import com.goodee.market.trade.item.like.ItemLikeDTO;
 
 
 public class ItemDTO{
@@ -17,6 +18,7 @@ public class ItemDTO{
 	   private Date itemDueDate;
 	   private Integer itemStatus;
 	   private List<ItemImageDTO> itemImageDTOs;
+	   private ItemLikeDTO itemLikeDTO;
 	   
 	   
 
@@ -79,6 +81,14 @@ public class ItemDTO{
 	public void setItemStatus(Integer itemStatus) {
 		this.itemStatus = itemStatus;
 	}
+	public ItemLikeDTO getItemLikeDTO() {
+		return itemLikeDTO;
+	}
+	public void setItemLikeDTO(ItemLikeDTO itemLikeDTO) {
+		this.itemLikeDTO = itemLikeDTO;
+	}
+
+	
 
 	
 	

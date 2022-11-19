@@ -1,6 +1,7 @@
 package com.goodee.market.trade.item;
 
 import java.io.File;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.goodee.market.member.MemberDTO;
 import com.goodee.market.util.FileManager;
 import com.goodee.market.util.MainPager;
 import com.goodee.market.util.Pager;
@@ -90,13 +92,12 @@ public class ItemService{
 		return itemDAO.getList(pager);
 	}
 	
-	
-	public List<ItemDTO> getHeartList(ItemDTO itemDTO)throws Exception{
-		
-		return itemDAO.getHeartList(itemDTO);
+	public List<ItemDTO> getLikeList (MemberDTO memberDTO) throws Exception {
+		return itemDAO.getLikeList(memberDTO);
 	}
+
 	
-	
+//----------------------------------------------------------------------	
 	
 	public ItemDTO getDetail(ItemDTO itemDTO)throws Exception {
 		return itemDAO.getDetail(itemDTO);
@@ -126,7 +127,7 @@ public class ItemService{
 	
 	
 	public int setUpdate(ItemDTO itemDTO, MultipartFile[] files,ServletContext servletContext)throws Exception {
-		int result= itemDAO.setUpdate(itemDTO);
+		int result= itemDAO.setUpdate(itemDTO, files, servletContext);
 		String path="resources/upload/item";
 
 		if(result<1) {

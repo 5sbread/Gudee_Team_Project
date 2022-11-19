@@ -71,7 +71,7 @@
 							<a class="member-a" href="/member/logout">🔓로그아웃</a>
 						</li>
 						<li class="member-li">
-							<a class="member-a" href="/trade/heartlist">❤️찜 바구니</a>
+							<a class="member-a" href="/trade/like?memberNum=${sessionScope.member.memberNum}">❤️찜 바구니</a>
 						</li>
 						<li class="member-li">
 							<a class="member-a" href="/mypage/trade/main?memberNum=${sessionScope.member.memberNum}">🎁마이페이지</a>
@@ -118,7 +118,7 @@
 				<li class="cate-li">
 				  <a class="cate-a" href="/trade/review" role="button" data-bs-toggle="dropdown" aria-expanded="false">후기</a>
 				  <ul class="dropdown-menu">
-						<li><a href="/trade/review/main" class="cate-a-all">전체 카테고리</a></li>
+						<li><a href="/trade/review/main?star=5" class="cate-a-all">전체 카테고리</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a href="/trade/category?page=${i}&filter=의류&select=${pager.select}&search=${pager.search}" class="cate-a">의류</a></li>
 						<li><a href="/trade/review?page=${i}&filter=식품류&select=${pager.select}&search=${pager.search}" class="cate-a">식품류</a></li>

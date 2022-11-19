@@ -51,11 +51,7 @@
 			    WHERE R BETWEEN #{startRow} and #{lastRow}
     	</select>
     	
-  
-		
-		
     	<!-- 카테고리 메인 -->
-
  		<select id="getList" resultMap="getMainResult" parameterType="Pager">
 				SELECT IT.* FROM
 					    (SELECT ROWNUM R, IT.* FROM
@@ -82,25 +78,45 @@
 				<result column="itemduedate" property="itemDueDate"/>
 				<result column="itemstatus" property="itemStatus"/>
 				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
-				<id column="filenum" property="fileNum"/>
-				<result column="filename" property="fileName"/>
-				<result column="oriname" property="oriName"/>
+					<id column="filenum" property="fileNum"/>
+					<result column="filename" property="fileName"/>
+					<result column="oriname" property="oriName"/>
 				</collection>
 		</resultMap>
 
 		<!-- 찜 목록 -->
-		<select id="getHeartList" resultMap="getMainResult" parameterType="ItemDTO">
-		 	SELECT *
-	            FROM ITEM I, ITEMIMAGE IM
-		            INNER JOIN
-		            	ITEMLIKE_MEMBER IM
-		            ON I.ITEMNUM= IM.ITEMNUM
-		            
-		            INNER JOIN
-		            	MEMBER M
-		            ON M.MEMBERNUM= IM.MEMBERNUM
-            WHERE M.MEMBERNUM=62
+		<select id="getLikeList" resultMap="getLikeResult" parameterType="ItemDTO">
+				SELECT *
+			FROM ITEM I
+		    	INNER JOIN ITEMIMAGE IM
+		        ON I.ITEMNUM = IM.ITEMNUM
+		        
+		        INNER JOIN ITEMLIKE IL
+		        ON I.ITEMNUM= IL.ITEMNUM
+
+     		WHERE IL.MEMBERNUM=#{memberNum}
 		</select>
+		
+		<resultMap type="ItemDTO" id="getLikeResult">
+			<id column="itemnum" property="itemNum"/>
+				<result column="membernum" property="memberNum"/>
+				<result column="itemtitle" property="itemTitle"/>
+				<result column="itemcontents" property="itemContents"/>
+				<result column="itemcategory" property="itemCategory"/>
+				<result column="itemprice" property="itemPrice"/>
+				<result column="itemduedate" property="itemDueDate"/>
+				<result column="itemstatus" property="itemStatus"/>
+				
+				<association property="itemLikeDTO" javaType="ItemLikeDTO">
+					<id column="likeNum" property="likeNum"/>
+				</association>
+				
+				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
+					<id column="filenum" property="fileNum"/>
+					<result column="filename" property="fileName"/>
+					<result column="oriname" property="oriName"/>
+				</collection>
+		</resultMap>
 
 
     	<insert id="setAddFile" parameterType="ItemImageDTO" >
@@ -115,7 +131,7 @@
     	
     	<select id="getMainCount" resultType="Long" parameterType="MainPager">
     			SELECT COUNT(ITEMNUM) FROM ITEM ORDER BY ITEMNUM DESC
-		</select>	
+		</select>
     		
 
 		<select id="getDetail" parameterType="ItemDTO" resultMap="getDetailResult">

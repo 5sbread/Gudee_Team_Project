@@ -1,6 +1,7 @@
 package com.goodee.market.trade.item;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -121,17 +122,18 @@ public class ItemController{
 		return mv;
 	}
 	
-	
-	//찜목록
-	@GetMapping(value = "heartlist")
-	public ModelAndView getHeartList(ItemDTO itemDTO)throws Exception {
-		System.out.println("찜");
+	//찜 목록
+	@GetMapping(value = "like")
+	public ModelAndView getLikeList (HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
-		ModelAndView mv =new ModelAndView();
-		List<ItemDTO> ar = itemService.getHeartList(itemDTO);
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		mv.addObject("member", memberDTO);
 		
-		mv.addObject("list", ar);	
-		mv.setViewName("trade/heartlist");
+		List<ItemDTO> ar = itemService.getLikeList(memberDTO);
+		mv.addObject("list", ar);
+		
+		mv.setViewName("trade/like");
 		return mv;
 	}
 

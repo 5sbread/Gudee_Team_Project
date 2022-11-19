@@ -12,9 +12,6 @@ import com.goodee.market.util.MyPagePager;
 public interface MyPageInterface {
 	
 	
-	//찜 리스트
-	//public List<E> getHeartList() throws Exception;
-	
 	//마이페이지 메인
 	public MemberDTO getMyPage(MemberDTO memberDTO) throws Exception;
 	
