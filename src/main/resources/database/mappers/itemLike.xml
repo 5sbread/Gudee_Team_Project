@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+     <mapper namespace="com.goodee.market.trade.item.like.ItemLikeDAO">
+     	
+     	<insert id="setLike" parameterType="ItemLikeDTO">
+		INSERT INTO ITEMLIKE_MEMBER(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
+		</insert>
+		
+		<select id="itemLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
+			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE MEMBERNUM = #{memberNum} AND ITEMNUM = #{itemNum}
+		</select>
+		
+		<delete id="setUnlike" parameterType="ItemLikeDTO">
+			DELETE FROM ITEMLIKE WHERE MEMBERNUM = #{memberNum} AND ITEMNUM = #{itemNum}
+		</delete>
+     	
+     </mapper>

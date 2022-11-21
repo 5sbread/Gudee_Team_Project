@@ -13,7 +13,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.goodee.market.trade.item.ItemImageDTO" alias="ItemImageDTO"/>
 		<typeAlias type="com.goodee.market.trade.item.ItemCommentDTO" alias="ItemCommentDTO"/>
 		<typeAlias type="com.goodee.market.trade.item.ItemCommentPager" alias="ItemCommentPager"/>
-		<typeAlias type="com.goodee.market.trade.item.like.ItemLikeDTO" alias="ItemLikeDTO"/>
 		<typeAlias type="com.goodee.market.trade.sellItemList.SellItemListDTO" alias="SellItemListDTO"/>
 		<typeAlias type="com.goodee.market.trade.buyItemList.BuyItemListDTO" alias="BuyItemListDTO"/>
 		<typeAlias type="com.goodee.market.trade.review.ReviewDTO" alias="ReviewDTO"/>
@@ -24,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.goodee.market.member.ReportDTO" alias="ReportDTO"/>
 		<typeAlias type="com.goodee.market.member.RoleDTO" alias="RoleDTO"/>
 		<typeAlias type="com.goodee.market.member.InquiryDTO" alias="InquiryDTO"/>
+		<typeAlias type="com.goodee.market.trade.item.like.ItemLikeDTO" alias="ItemLikeDTO"/>
 		
 		<typeAlias type="com.goodee.market.meetingboard.MeetingBoardDTO" alias="MeetingBoardDTO"/>
 		<typeAlias type="com.goodee.market.meetingboard.MeetingBoardImageDTO" alias="MeetingBoardImageDTO"/>

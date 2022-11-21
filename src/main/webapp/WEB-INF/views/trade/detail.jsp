@@ -171,12 +171,16 @@
                              <span class="title"><a href="./delete?num=${dto.itemNum}" class="btn btn-danger">상품 삭제</a></span>
                              
                             </div>
-                            <c:if test="${!isLikeExist }">
+                            
+                            <input type="text" id="memberNum" value="${sessionScope.member.memberNum}">
+                            <input type="text" id="itemNum" value="${dto.itemNum}">
+                            
 								<img alt="" src="/resources/images/meetingboard/detail_star_icon.svg" id="likeBtn">
+                           <%--  <c:if test="${!isLikeExist}">
 							</c:if>
-							<c:if test="${isLikeExist }">
+							<c:if test="${isLikeExist}">
 								<img alt="" src="/resources/images/meetingboard/detail_star_xmas_icon.svg" id="unlikeBtn">
-							</c:if>
+							</c:if> --%>
             
 			</div>
             
@@ -257,6 +261,8 @@
 <script src="../../../resources/js/itemdetail.js"></script>
 <script src="../../../resources/js/itemcomment.js"></script>
 <c:import url="../template/trade/footer.jsp"></c:import>
+
+<script src="../../../resources/js/trade/itemLike.js"></script>
 
 </body>
 </html>

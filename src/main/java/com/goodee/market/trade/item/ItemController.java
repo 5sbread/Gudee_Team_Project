@@ -18,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.goodee.market.member.MemberDTO;
+import com.goodee.market.trade.item.like.ItemLikeDTO;
+import com.goodee.market.trade.item.like.ItemLikeService;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.util.MainPager;
 import com.goodee.market.util.Pager;
@@ -29,6 +31,9 @@ public class ItemController{
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private ItemLikeService likeService;
 	
 	
 //	@PostMapping("review")
@@ -141,13 +146,20 @@ public class ItemController{
 	//글상세
 	@GetMapping(value="detail")
 	public ModelAndView getDetail(Long num, ModelAndView mv) throws Exception {
+		//아이템 정보
 		ItemDTO itemDTO =new ItemDTO();
 		itemDTO.setItemNum(num);
 		itemDTO = itemService.getDetail(itemDTO);
-		System.out.println(itemDTO.getItemPrice());
 		mv.addObject("dto", itemDTO);
-		mv.setViewName("trade/detail");
 		
+		//찜
+		MemberDTO memberDTO = new MemberDTO();
+		ItemLikeDTO likeDTO = new ItemLikeDTO();
+		likeDTO.setItemNum(itemDTO.getItemNum());
+		likeDTO.setMemberNum(memberDTO.getMemberNum());
+		
+		
+		mv.setViewName("trade/detail");
 		return mv;		
 	} 
 	
