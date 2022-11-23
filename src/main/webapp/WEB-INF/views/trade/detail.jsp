@@ -72,8 +72,6 @@
 
 <div class="sub_container">
     <div class="sub_item_wrap">
-	
-
             <div class="item_thum carousel slide" id="carouselExample" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -114,12 +112,20 @@
 
             <span class="campain_tit">상품 정보</span>
             <div class="campain_wrap">
-                      
-                      <p>&nbsp;</p>
-                      <p>
-                      ${dto.itemContents}
-                      </p>		
-              </div>
+            	<p>&nbsp;</p>
+                <p>${dto.itemContents}</p>		
+            
+            	<input type="hidden" id="memberNum" value="${sessionScope.member.memberNum}">
+                <input type="hidden" id="itemNum" value="${dto.itemNum}">
+                            
+                <c:if test="${isLikeExist eq false}">
+					<button type="button" id="likeBtn">좋아요</button>
+				</c:if>
+				<c:if test="${isLikeExist}">
+					<button type="button" id="unlikeBtn">좋아요 취소</button>
+				</c:if>
+				<span>💚 ${like}</span>
+            </div>
 
 
 
@@ -164,25 +170,15 @@
 
                         <div class="time_wrap">
                             <div class="left">
-
-                            <span class="title"><a href= "./update?num=${dto.itemNum}" class="btn btn-primary">상품 수정</a></span>
+	                            <span class="title">
+	                            	<a href= "./update?num=${dto.itemNum}" class="btn btn-primary">상품 수정</a>
+	                            </span>
                             </div>
                             <div class="right">
-                             <span class="title"><a href="./delete?num=${dto.itemNum}" class="btn btn-danger">상품 삭제</a></span>
-                             
+                            	<span class="title">
+                            		<a href="./delete?num=${dto.itemNum}" class="btn btn-danger">상품 삭제</a>
+                            	</span>
                             </div>
-                            
-                            <input type="text" id="memberNum" value="${sessionScope.member.memberNum}">
-                            <input type="text" id="itemNum" value="${dto.itemNum}">
-                            
-                           	<c:if test="${isLikeExist eq false}">
-								<button type="button" id="likeBtn">좋아요</button>
-							</c:if>
-							<c:if test="${isLikeExist}">
-								<button type="button" id="unlikeBtn">좋아요 취소</button>
-							</c:if>
-							<span>💚 ${like}</span>
-            
 			</div>
             
         </div>    

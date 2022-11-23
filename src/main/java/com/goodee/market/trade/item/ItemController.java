@@ -161,7 +161,7 @@ public class ItemController{
 						// 판매자인지 로그인한 사람인지 확인해보기
 		likeDTO.setMemberNum(itemDTO.getMemberNum());
 		
-		boolean isLikeExist = likeService.getLikeExist(likeDTO);
+		boolean isLikeExist = likeService.isLikeExist(likeDTO);
 		mv.addObject("isLikeExist", isLikeExist);
 		
 		//아이템 좋아요 총갯수

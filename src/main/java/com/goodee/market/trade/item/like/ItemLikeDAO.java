@@ -18,8 +18,8 @@ public class ItemLikeDAO {
 		return sqlSession.insert(NAMESPACE + "setLike", itemLikeDTO);
 	}
 	
-	public int getLikeExist (ItemLikeDTO itemLikeDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getLikeExist", itemLikeDTO);
+	public int isLikeExist (ItemLikeDTO itemLikeDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"isLikeExist", itemLikeDTO);
 	}
 
 	public int setUnlike(ItemLikeDTO itemLikeDTO) throws Exception {

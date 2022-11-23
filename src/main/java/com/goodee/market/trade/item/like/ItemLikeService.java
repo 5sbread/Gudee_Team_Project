@@ -16,8 +16,8 @@ public class ItemLikeService {
 	}
 	
 	
-	public boolean getLikeExist (ItemLikeDTO itemLikeDTO) throws Exception {
-		int exist = itemLikeDAO.getLikeExist(itemLikeDTO);
+	public boolean isLikeExist (ItemLikeDTO itemLikeDTO) throws Exception {
+		int exist = itemLikeDAO.isLikeExist(itemLikeDTO);
 		boolean isExist = false;
 		
 		if (exist == 1) {

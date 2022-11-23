@@ -2,15 +2,15 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-   
-     <mapper namespace="com.goodee.market.trade.item.like.ItemLikeDAO">
+   					
+<mapper namespace="com.goodee.market.trade.item.like.ItemLikeDAO">
      	
      	<insert id="setLike" parameterType="ItemLikeDTO">
 			INSERT INTO ITEMLIKE_MEMBER(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
 		</insert>
 		
-		<select id="getLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
-			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE MEMBERNUM = #{memberNum} AND ITEMNUM = #{itemNum}
+		<select id="isLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
+			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum} AND MEMBERNUM = #{memberNum}
 		</select>
 		
 		<delete id="setUnlike" parameterType="ItemLikeDTO">
@@ -18,7 +18,7 @@
 		</delete>
 		
 		<select id="getItemLike" parameterType="ItemDTO" resultType="Integer">
-		SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum}
-	</select>
+			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum}
+		</select>
      	
-     </mapper>
+</mapper>
