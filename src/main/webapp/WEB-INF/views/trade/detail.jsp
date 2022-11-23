@@ -175,12 +175,13 @@
                             <input type="text" id="memberNum" value="${sessionScope.member.memberNum}">
                             <input type="text" id="itemNum" value="${dto.itemNum}">
                             
-								<img alt="" src="/resources/images/meetingboard/detail_star_icon.svg" id="likeBtn">
-                           <%--  <c:if test="${!isLikeExist}">
+                           	<c:if test="${isLikeExist eq false}">
+								<button type="button" id="likeBtn">좋아요</button>
 							</c:if>
 							<c:if test="${isLikeExist}">
-								<img alt="" src="/resources/images/meetingboard/detail_star_xmas_icon.svg" id="unlikeBtn">
-							</c:if> --%>
+								<button type="button" id="unlikeBtn">좋아요 취소</button>
+							</c:if>
+							<span>💚 ${like}</span>
             
 			</div>
             

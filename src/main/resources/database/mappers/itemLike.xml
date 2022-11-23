@@ -6,15 +6,19 @@
      <mapper namespace="com.goodee.market.trade.item.like.ItemLikeDAO">
      	
      	<insert id="setLike" parameterType="ItemLikeDTO">
-		INSERT INTO ITEMLIKE_MEMBER(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
+			INSERT INTO ITEMLIKE_MEMBER(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
 		</insert>
 		
-		<select id="itemLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
+		<select id="getLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
 			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE MEMBERNUM = #{memberNum} AND ITEMNUM = #{itemNum}
 		</select>
 		
 		<delete id="setUnlike" parameterType="ItemLikeDTO">
 			DELETE FROM ITEMLIKE WHERE MEMBERNUM = #{memberNum} AND ITEMNUM = #{itemNum}
 		</delete>
+		
+		<select id="getItemLike" parameterType="ItemDTO" resultType="Integer">
+		SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum}
+	</select>
      	
      </mapper>

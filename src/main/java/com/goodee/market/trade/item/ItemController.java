@@ -152,12 +152,21 @@ public class ItemController{
 		itemDTO = itemService.getDetail(itemDTO);
 		mv.addObject("dto", itemDTO);
 		
-		//찜
-		MemberDTO memberDTO = new MemberDTO();
+		//유저 개인 좋아요 정보
 		ItemLikeDTO likeDTO = new ItemLikeDTO();
-		likeDTO.setItemNum(itemDTO.getItemNum());
-		likeDTO.setMemberNum(memberDTO.getMemberNum());
 		
+		//유저 정보
+		MemberDTO memberDTO = new MemberDTO();
+		likeDTO.setItemNum(itemDTO.getItemNum());
+						// 판매자인지 로그인한 사람인지 확인해보기
+		likeDTO.setMemberNum(itemDTO.getMemberNum());
+		
+		boolean isLikeExist = likeService.getLikeExist(likeDTO);
+		mv.addObject("isLikeExist", isLikeExist);
+		
+		//아이템 좋아요 총갯수
+		int itemLike = likeService.getItemLike(itemDTO);
+		mv.addObject("like", itemLike);
 		
 		mv.setViewName("trade/detail");
 		return mv;		
