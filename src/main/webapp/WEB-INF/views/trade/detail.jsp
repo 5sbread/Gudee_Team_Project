@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/resources/css/trade/header.css" />
     <link rel="stylesheet" href="/resources/css/trade/footer.css" />
     <link rel="stylesheet" href="../../../resources/css/itemdetail.css" />
+    
+    <script defer="defer" src="/resources/js/trade/itemLike.js"></script>
 
 </head>
 <body>
@@ -258,8 +260,6 @@
 <script src="../../../resources/js/itemdetail.js"></script>
 <script src="../../../resources/js/itemcomment.js"></script>
 <c:import url="../template/trade/footer.jsp"></c:import>
-
-<script src="../../../resources/js/trade/itemLike.js"></script>
 
 </body>
 </html>
