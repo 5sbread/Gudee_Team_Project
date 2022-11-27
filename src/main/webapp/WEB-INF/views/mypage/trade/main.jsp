@@ -46,6 +46,7 @@
 								<div class="sidebar-mb-con">
 									<img class ="mb-pic" alt="" src="/resources/upload/member/${member.memberFileDTO.fileName}">
 									<h6 class="mp-mb-nk">🤍 아이디 : ${sessionScope.member.id}</h6>
+									<h6 class="mp-mb-nk">🤍 이름 : ${sessionScope.member.name}</h6>
 									<h6 class="mp-mb-nk">🤍 닉네임 : ${sessionScope.member.nickname}</h6>
 								</div>	
 								<a class="mp-mb-h" href="/member/infoUpdate?memberNum=${member.memberNum}">회원정보 수정</a>
@@ -75,7 +76,7 @@
 							<div class="mp-table">
 						        <table>
 						            <thead class="mp-thead">
-						                <tr>
+						                <tr class="mp-fix">
 						                    <th class="mp-title">제목</th>
 						                    <th class="mp-title">가격</th>
 						                    <th class="mp-title"> </th>
@@ -86,7 +87,7 @@
 						                <c:forEach items="${sellitemlist}" var="sellItem">
 								        <tr>
 								            <td class="mp-item">
-								                <img src="/resources/images/trade/cart/cart-1.jpg" alt="" class="mp-img">
+								                <img src="/resources/upload/item/${sellItem.itemImageDTOs[0].fileName}" alt="" class="mp-img">
 								            	<h6><a href="../trade/detail?num=${sellItem.itemNum}" class="mp-imgtext">${sellItem.itemTitle}</a></h6>
 								            </td>
 								            <td>
@@ -123,21 +124,23 @@
 						            </thead>
 						            <tbody class="mp-m-tbody">
 						            	<c:forEach items="${buyitemlist}" var="buyItem">
-					                    <tr>
-			                                <td class="mp-item">
-							                    <img src="/resources/images/trade/cart/cart-1.jpg" alt="" class="mp-img">
-							                    <h6><a href="../trade/detail?num=${buyItem.itemNum}" class="mp-imgtext">${buyItem.itemTitle}</a></h6>
-					                        </td>
-								            <td>
-								                ${buyItem.itemPrice}
-				                            </td>
-											<td>
-							                    <%-- ${buyItem.nickName} --%>
-				                            </td>
-							                <td class="mp-etctext">
-						 	                   <a href="#" class="mp-etc">리뷰작성</a>
-			                                </td>
-							            </tr>  
+						            	<c:forEach items="${buyItem.itemDTOs}" var="item">
+						                    <tr>
+				                               <td class="mp-item">
+								                    <img src="/resources/upload/item/${item.itemImageDTOs[0].fileName}" alt="" class="mp-img">
+								                    <h6><a href="../trade/detail?num=${item.itemNum}" class="mp-imgtext">${item.itemTitle}</a></h6>
+						                        </td>
+									            <td>
+									                ${item.itemPrice}
+					                            </td>
+												<td>
+								                    ${buyItem.nickname} (${buyItem.id})
+					                            </td>
+								                <td class="mp-etctext">
+							 	                   <a href="#" class="mp-etc">리뷰작성</a>
+				                                </td>
+								            </tr>  
+						            	</c:forEach>
 						            	</c:forEach>
 						            </tbody>
 						        </table>
@@ -164,7 +167,7 @@
 				                        <c:forEach items="${reviewlist}" var="reviewItem">
 								            <tr>
 								                <td class="mp-item">
-								                    <img src="/resources/images/trade/cart/cart-1.jpg" alt="" class="mp-img">
+								                    <img src="/resources/upload/item/" alt="" class="mp-img">
 								                    <h6><a href="../trade/detail?num=${review.reviewNum}" class="mp-imgtext">${reviewItem.reviewTitle}</a></h6>
 					                            </td>
 				                                <td>

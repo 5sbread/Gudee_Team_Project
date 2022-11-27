@@ -21,9 +21,6 @@ public class ItemDTO{
 	   private List<ItemLikeDTO> itemLikeDTOs;
 	   private List<BuyerDTO> buyerDTOs;
 	   
-
-	
-	 
 	public List<ItemLikeDTO> getItemLikeDTOs() {
 		return itemLikeDTOs;
 	}

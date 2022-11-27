@@ -28,10 +28,6 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
-	@Autowired
-	private MemberService memberService;
-	
-	
 	@GetMapping(value = "main")
 	public ModelAndView getMypage (HttpSession session, MyPagePager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -58,53 +54,4 @@ public class MyPageController {
 		return mv;
 	}
 	
-	
-	//--------------------------------
-	//@RequestMapping(value = "sellitemlist", method = RequestMethod.GET)
-	// 두개 같은 의미 | ↑ 줄이면 ↓
-	@GetMapping(value = "sellitemlist")
-	public String getSellItemList (HttpSession session) throws Exception{				
-		ModelAndView mv = new ModelAndView();
-		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberDTO = myPageService.getMyPage(memberDTO);
-		mv.addObject("member", memberDTO);
-		
-		List<ItemDTO> ar = myPageService.getSellItemList(memberDTO);
-		mv.addObject("list", ar);
-		
-		//System.out.println("중고 마이페이지 - sell List 접속");
-		return "mypage/trade/sellitemlist";
-	}
-	
-	
-	@GetMapping(value = "buyitemlist")
-	public String getBuyItemList (HttpSession session) throws Exception{				
-		ModelAndView mv = new ModelAndView();
-		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberDTO = myPageService.getMyPage(memberDTO);
-		mv.addObject("member", memberDTO);
-
-		List<ItemDTO> ar = myPageService.getBuyItemList(memberDTO);
-		mv.addObject("list", ar);
-		//System.out.println("중고 마이페이지 - buy List 접속");
-		return "mypage/trade/buyitemlist";
-	}
-	
-	
-	@GetMapping(value = "reviewlist")
-	public String getReviewList (HttpSession session) throws Exception{				
-		ModelAndView mv = new ModelAndView();
-		
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		memberDTO = myPageService.getMyPage(memberDTO);
-		mv.addObject("member", memberDTO);
-
-		List<ReviewDTO> ar = myPageService.getReviewList(memberDTO);
-		mv.addObject("list", ar);
-		//System.out.println("중고 마이페이지 - review List 접속");
-		return "mypage/trade/reviewlist";
-	}
-
 }

@@ -22,7 +22,7 @@ public class MainPager {
 		
 		
 		public MainPager() {
-			this.perPage=8L;
+			this.perPage=6L;
 			this.perBlock=5L;
 		}
 		

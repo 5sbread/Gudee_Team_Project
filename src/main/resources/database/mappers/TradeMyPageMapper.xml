@@ -43,39 +43,60 @@
 	</select>
 	<resultMap type="ItemDTO" id="getSellResult">
 		<id column="itemnum" property="itemNum"/>
-			<result column="membernum" property="memberNum"/>
-			<result column="itemtitle" property="itemTitle"/>
-			<result column="itemcontents" property="itemContents"/>
-			<result column="itemcategory" property="itemCategory"/>
-			<result column="itemprice" property="itemPrice"/>
-			<result column="itemduedate" property="itemDueDate"/>
-			<result column="itemstatus" property="itemStatus"/>
+		<result column="membernum" property="memberNum"/>
+		<result column="itemtitle" property="itemTitle"/>
+		<result column="itemcontents" property="itemContents"/>
+		<result column="itemcategory" property="itemCategory"/>
+		<result column="itemprice" property="itemPrice"/>
+		<result column="itemduedate" property="itemDueDate"/>
+		<result column="itemstatus" property="itemStatus"/>
+		
+		<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
+			<id column="filenum" property="fileNum"/>
+			<result column="filename" property="fileName"/>
+			<result column="oriname" property="oriName"/>
+		</collection>
 	</resultMap>
 	
 	<!-- 구매리스트 -->
-	<select id="getBuyItemList" resultMap="getBuyResult" parameterType="ItemDTO">
-		SELECT I.*, IM.*
+	<select id="getBuyItemList" resultMap="getBuyResult" parameterType="MemberDTO">
+		SELECT I.*, IM.*, M.ID, M.NICKNAME
 			FROM ITEM I
 		        LEFT JOIN ITEMIMAGE IM
 		        ON I.ITEMNUM = IM.ITEMNUM
 		        
 		        LEFT JOIN BUYER B
 		        ON I.ITEMNUM = B.ITEMNUM
+		        
+		        LEFT JOIN MEMBER M
+		        ON I.MEMBERNUM = M.MEMBERNUM
 		WHERE B.BUYERNUM = #{memberNum}
 	</select>
-	<resultMap type="ItemDTO" id="getBuyResult">
-		<id column="itemnum" property="itemNum"/>
-			<result column="membernum" property="memberNum"/>
+	<resultMap type="MemberDTO" id="getBuyResult">
+		<id column="id" property="id"/>
+		<result column="nickname" property="nickname"/>
+		<result column="membernum" property="memberNum"/>
+		
+		<collection property="itemDTOs" javaType="List" ofType="ItemDTO">
+			<id column="itemnum" property="itemNum"/>
 			<result column="itemtitle" property="itemTitle"/>
 			<result column="itemcontents" property="itemContents"/>
 			<result column="itemcategory" property="itemCategory"/>
 			<result column="itemprice" property="itemPrice"/>
 			<result column="itemduedate" property="itemDueDate"/>
-			<result column="itemstatus" property="itemStatus"/>
-			<collection property="itemBuyerDTOs" javaType="List" ofType="ItemBuyerDTO">
-				<id column="buyNum" property="buyNum"/>
-				<result column="buyerNum" property="buyerNum"/>
-			</collection>
+			<result column="itemstatus" property="itemStatus"/>		
+		</collection>
+		
+		<collection property="buyerDTOs" javaType="List" ofType="BuyerDTO">
+			<id column="buyNum" property="buyNum"/>
+			<result column="buyerNum" property="buyerNum"/>
+		</collection>
+		
+		<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
+			<id column="filenum" property="fileNum"/>
+			<result column="filename" property="fileName"/>
+			<result column="oriname" property="oriName"/>
+		</collection>
 	</resultMap>
 
 	
@@ -87,10 +108,10 @@
 	
 	<resultMap type="ReviewDTO" id="getReviewResult">
 		<id column="reviewnum" property="reviewNum"/>
-			<result column="reviewtitle" property="reviewTitle"/>
-			<result column="reviewcontent" property="reviewContent"/>
-			<result column="reviewhit" property="reviewHit"/>
-			<result column="reviewstar" property="reviewStar"/>
+		<result column="reviewtitle" property="reviewTitle"/>
+		<result column="reviewcontent" property="reviewContent"/>
+		<result column="reviewhit" property="reviewHit"/>
+		<result column="reviewstar" property="reviewStar"/>
 	</resultMap>	
 	
 	<select id="getCount" resultType="Long" parameterType="MyPagePager">

@@ -4,13 +4,13 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.goodee.market.member.MemberDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
-import com.goodee.market.trade.sellItemList.SellItemListDTO;
 import com.goodee.market.util.MyPagePager;
 
 @Service

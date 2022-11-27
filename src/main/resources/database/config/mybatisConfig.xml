@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.goodee.market.trade.item.like.ItemLikeDTO" alias="ItemLikeDTO"/>
 		<typeAlias type="com.goodee.market.trade.review.ReviewDTO" alias="ReviewDTO"/>
 		<typeAlias type="com.goodee.market.trade.review.ReviewImageDTO" alias="ReviewImageDTO"/>
-		<typeAlias type="com.goodee.market.trade.item.BuyerDAO" alias="BuyerDAO"/>
+		<typeAlias type="com.goodee.market.trade.item.BuyerDTO" alias="BuyerDTO"/>
 		
 		<typeAlias type="com.goodee.market.member.MemberDTO" alias="MemberDTO"/>
 		<typeAlias type="com.goodee.market.member.MemberFileDTO" alias="MemberFileDTO"/>

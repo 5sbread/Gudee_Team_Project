@@ -205,7 +205,7 @@
     display: inline-block;
     margin-right: 2rem;
     margin-left: -4rem;
-    max-width: 100%;
+    max-width: 5rem;
     vertical-align: middle;
     border-style: none;
 }
@@ -220,6 +220,11 @@
 .mp-imgtext:hover{
     color: #7fad39;
 }
+.mp-table {
+	overflow: scroll;
+	height: 20rem;
+}
+
 
 .mp-m-tbody tr td h6 {
     display: inline-block;

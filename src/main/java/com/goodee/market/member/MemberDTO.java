@@ -6,7 +6,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.goodee.market.meetingboard.MeetingBoardDTO;
 import com.goodee.market.meetingboard.like.MeetingLikeDTO;
+import com.goodee.market.trade.item.BuyerDTO;
 import com.goodee.market.trade.item.ItemDTO;
+import com.goodee.market.trade.item.ItemImageDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 
 public class MemberDTO {
@@ -33,8 +35,18 @@ public class MemberDTO {
 	private List<ReportDTO> reportDTOs;
 	
 	private List<ItemDTO> itemDTOs;
+	private List<ItemImageDTO> itemImageDTOs;
 	private List<ReviewDTO> reviewDTOs;
+	private List<BuyerDTO> buyerDTOs;
 	
+	
+	
+	public List<ItemImageDTO> getItemImageDTOs() {
+		return itemImageDTOs;
+	}
+	public void setItemImageDTOs(List<ItemImageDTO> itemImageDTOs) {
+		this.itemImageDTOs = itemImageDTOs;
+	}
 	public Long getMemberNum() {
 		return memberNum;
 	}
@@ -150,6 +162,20 @@ public class MemberDTO {
 	public void setItemDTOs(List<ItemDTO> itemDTOs) {
 		this.itemDTOs = itemDTOs;
 	}
+	public List<ReviewDTO> getReviewDTOs() {
+		return reviewDTOs;
+	}
+	public void setReviewDTOs(List<ReviewDTO> reviewDTOs) {
+		this.reviewDTOs = reviewDTOs;
+	}
+	public List<BuyerDTO> getBuyerDTOs() {
+		return buyerDTOs;
+	}
+	public void setBuyerDTOs(List<BuyerDTO> buyerDTOs) {
+		this.buyerDTOs = buyerDTOs;
+	}
+	
+	
 	
 	
 	
