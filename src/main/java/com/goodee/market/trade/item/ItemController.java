@@ -115,14 +115,12 @@ public class ItemController{
 	//카테고리 메인
 	@GetMapping(value = "category")
 	public ModelAndView getList(Pager pager)throws Exception {
-		System.out.println("category");
-		
 		ModelAndView mv = new ModelAndView();
+		//상품 목록
 		List<ItemDTO> ar =itemService.getList(pager);
-		
 		mv.addObject("list", ar);
-		mv.addObject("pager", pager);
 		
+		mv.addObject("pager", pager);
 		mv.setViewName("trade/category");
 		return mv;
 	}

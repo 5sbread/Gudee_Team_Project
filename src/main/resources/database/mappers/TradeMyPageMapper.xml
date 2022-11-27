@@ -34,43 +34,50 @@
 	</resultMap>
 
 	<!-- 판매리스트 -->
-	<select id="getSellItemList" resultMap="getMyPageResult" parameterType="ItemDTO">	
-            SELECT IT.* FROM
-		    (SELECT * FROM ITEM I
-		        LEFT JOIN
-		        ITEMIMAGE IM
-		        ON I.ITEMNUM = IM.ITEMNUM
-		    )IT
-		WHERE MEMBERNUM = #{memberNum}
+	<select id="getSellItemList" resultMap="getSellResult" parameterType="ItemDTO">	
+            SELECT I.*, IM.*
+            	FROM ITEM I
+		        	LEFT JOIN ITEMIMAGE IM
+		        	ON I.ITEMNUM = IM.ITEMNUM
+			WHERE I.MEMBERNUM = #{memberNum}
 	</select>
-	
+	<resultMap type="ItemDTO" id="getSellResult">
+		<id column="itemnum" property="itemNum"/>
+			<result column="membernum" property="memberNum"/>
+			<result column="itemtitle" property="itemTitle"/>
+			<result column="itemcontents" property="itemContents"/>
+			<result column="itemcategory" property="itemCategory"/>
+			<result column="itemprice" property="itemPrice"/>
+			<result column="itemduedate" property="itemDueDate"/>
+			<result column="itemstatus" property="itemStatus"/>
+	</resultMap>
 	
 	<!-- 구매리스트 -->
-	<select id="getBuyItemList" resultMap="getMyPageResult" parameterType="ItemDTO">
-		SELECT IT.* FROM
-		    (SELECT * FROM ITEM I
-		        LEFT JOIN
-		        ITEMIMAGE IM
+	<select id="getBuyItemList" resultMap="getBuyResult" parameterType="ItemDTO">
+		SELECT I.*, IM.*
+			FROM ITEM I
+		        LEFT JOIN ITEMIMAGE IM
 		        ON I.ITEMNUM = IM.ITEMNUM
-		    )IT
-		WHERE MEMBERNUM = #{memberNum}
+		        
+		        LEFT JOIN BUYER B
+		        ON I.ITEMNUM = B.ITEMNUM
+		WHERE B.BUYERNUM = #{memberNum}
 	</select>
-	
-	<resultMap type="ItemDTO" id="getMyPageResult">
-			<id column="itemnum" property="itemNum"/>
-				<result column="membernum" property="memberNum"/>
-				<result column="itemtitle" property="itemTitle"/>
-				<result column="itemcontents" property="itemContents"/>
-				<result column="itemcategory" property="itemCategory"/>
-				<result column="itemprice" property="itemPrice"/>
-				<result column="itemduedate" property="itemDueDate"/>
-				<result column="itemstatus" property="itemStatus"/>
-				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
-				<id column="filenum" property="fileNum"/>
-				<result column="filename" property="fileName"/>
-				<result column="oriname" property="oriName"/>
-				</collection>
-		</resultMap>
+	<resultMap type="ItemDTO" id="getBuyResult">
+		<id column="itemnum" property="itemNum"/>
+			<result column="membernum" property="memberNum"/>
+			<result column="itemtitle" property="itemTitle"/>
+			<result column="itemcontents" property="itemContents"/>
+			<result column="itemcategory" property="itemCategory"/>
+			<result column="itemprice" property="itemPrice"/>
+			<result column="itemduedate" property="itemDueDate"/>
+			<result column="itemstatus" property="itemStatus"/>
+			<collection property="itemBuyerDTOs" javaType="List" ofType="ItemBuyerDTO">
+				<id column="buyNum" property="buyNum"/>
+				<result column="buyerNum" property="buyerNum"/>
+			</collection>
+	</resultMap>
+
 	
 	<!-- 후기리스트 -->
 	<select id="getReviewList" resultMap="getReviewResult" parameterType="ReviewDTO">
@@ -87,8 +94,6 @@
 	</resultMap>	
 	
 	<select id="getCount" resultType="Long" parameterType="MyPagePager">
-    			SELECT COUNT(ITEMNUM) FROM ITEM
+    	SELECT COUNT(ITEMNUM) FROM ITEM
 	</select>
-		
-	
 </mapper>	

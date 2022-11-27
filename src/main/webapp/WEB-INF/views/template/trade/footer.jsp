@@ -28,21 +28,16 @@
 	            	<div id="map" style="width:100%;height:350px;"></div>
 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6f4fee9581f0b544ff40e3aa60be3101"></script>
 						<script>
-							var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+							var mapContainer = document.getElementById('map'), 
 							    mapOption = { 
-							        center: new kakao.maps.LatLng(37.47807428498916, 126.87930082685244), // 지도의 중심좌표
-							        level: 3 // 지도의 확대 레벨
+							        center: new kakao.maps.LatLng(37.47807428498916, 126.87930082685244),
+							        level: 3
 							    }; 
-							
-							var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-							
-							// 지도에 마커를 표시합니다 
+							var map = new kakao.maps.Map(mapContainer, mapOption);
 							var marker = new kakao.maps.Marker({
 							    map: map, 
 							    position: new kakao.maps.LatLng(37.47807428498916, 126.87930082685244)
 							});
-							
-							// 커스텀 오버레이에 표시할 컨텐츠 
 							var content = '<div class="wrap">' + 
 							            '    <div class="info">' + 
 							            '        <div class="title">' + 
@@ -62,20 +57,14 @@
 							            '        </div>' + 
 							            '    </div>' +    
 							            '</div>';
-							
-							// 마커 위에 커스텀오버레이를 표시
 							var overlay = new kakao.maps.CustomOverlay({
 							    content: content,
 							    map: map,
 							    position: marker.getPosition()       
 							});
-							
-							// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 							kakao.maps.event.addListener(marker, 'click', function() {
 							    overlay.setMap(map);
 							});
-							
-							// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
 							function closeOverlay() {
 							    overlay.setMap(null);     
 							}

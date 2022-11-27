@@ -3,11 +3,11 @@ package com.goodee.market.trade.myPage;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.goodee.market.member.MemberDTO;
-import com.goodee.market.trade.buyItemList.BuyItemListDTO;
 import com.goodee.market.trade.item.ItemDTO;
 import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.trade.sellItemList.SellItemListDTO;

@@ -18,11 +18,24 @@ public class ItemDTO{
 	   private Date itemDueDate;
 	   private Integer itemStatus;
 	   private List<ItemImageDTO> itemImageDTOs;
-	   private ItemLikeDTO itemLikeDTO;
-	   
+	   private List<ItemLikeDTO> itemLikeDTOs;
+	   private List<BuyerDTO> buyerDTOs;
 	   
 
+	
 	 
+	public List<ItemLikeDTO> getItemLikeDTOs() {
+		return itemLikeDTOs;
+	}
+	public void setItemLikeDTOs(List<ItemLikeDTO> itemLikeDTOs) {
+		this.itemLikeDTOs = itemLikeDTOs;
+	}
+	public List<BuyerDTO> getBuyerDTOs() {
+		return buyerDTOs;
+	}
+	public void setBuyerDTOs(List<BuyerDTO> buyerDTOs) {
+		this.buyerDTOs = buyerDTOs;
+	}
 	public List<ItemImageDTO> getItemImageDTOs() {
 	 return itemImageDTOs;
 	}
@@ -81,13 +94,6 @@ public class ItemDTO{
 	public void setItemStatus(Integer itemStatus) {
 		this.itemStatus = itemStatus;
 	}
-	public ItemLikeDTO getItemLikeDTO() {
-		return itemLikeDTO;
-	}
-	public void setItemLikeDTO(ItemLikeDTO itemLikeDTO) {
-		this.itemLikeDTO = itemLikeDTO;
-	}
-
 	
 
 	
