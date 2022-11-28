@@ -127,17 +127,16 @@
 						            	<c:forEach items="${buyItem.itemDTOs}" var="item">
 						                    <tr>
 				                               <td class="mp-item">
-								                    <img src="/resources/upload/item/${item.itemImageDTOs[0].fileName}" alt="" class="mp-img">
-								                    <h6><a href="../trade/detail?num=${item.itemNum}" class="mp-imgtext">${item.itemTitle}</a></h6>
-						                        </td>
-									            <td>
+				                               		<h6><a href="../../trade/detail?num=${item.itemNum}" class="mp-imgtext">${item.itemTitle}</a></h6>
+						                       </td>
+									           <td>
 									                ${item.itemPrice}
 					                            </td>
 												<td>
 								                    ${buyItem.nickname} (${buyItem.id})
 					                            </td>
 								                <td class="mp-etctext">
-							 	                   <a href="#" class="mp-etc">리뷰작성</a>
+							 	                   <a href="../../trade/review/write" class="mp-etc">리뷰작성</a>
 				                                </td>
 								            </tr>  
 						            	</c:forEach>
@@ -167,8 +166,7 @@
 				                        <c:forEach items="${reviewlist}" var="reviewItem">
 								            <tr>
 								                <td class="mp-item">
-								                    <img src="/resources/upload/item/" alt="" class="mp-img">
-								                    <h6><a href="../trade/detail?num=${review.reviewNum}" class="mp-imgtext">${reviewItem.reviewTitle}</a></h6>
+								                    <h6><a href="../../trade/review/detail?num=${review.reviewNum}" class="mp-imgtext">${reviewItem.reviewTitle}</a></h6>
 					                            </td>
 				                                <td>
 				                                    <c:choose>
@@ -180,10 +178,10 @@
 									                </c:choose>
 								                </td>
 								                <td class="mp-etctext">
-						                            <a href="#" class="mp-etc">수정하기</a>
+						                            <a href="../../trade/review/update?reviewNum=${review.reviewNum}" class="mp-etc">수정하기</a>
 								                </td>
 					                            <td class="mp-etctext">
-						                            <a href="#" class="mp-etc">삭제하기</a>
+						                            <a href="../../trade/review/delete?reviewNum=${review.reviewNum}" class="mp-etc">삭제하기</a>
 								                </td>
 						                    </tr>  
 							            </c:forEach>

@@ -34,67 +34,66 @@
     
     <delete id="setFileDelete" parameterType="ItemImageDTO" >
     DELETE ITEMIMAGE WHERE FILENUM= #{fileNum}
-    
     </delete>
     
     	<!-- 메인 -->
     	<select id="getTradeMain" resultMap="getMainResult" parameterType="MainPager">
 			SELECT IT.* FROM
-					    (SELECT ROWNUM R, IT.* FROM
-					            (SELECT * FROM ITEM I
-			                        left join
-			                        itemimage IM
-			                        on I.ITEMNUM = IM.ITEMNUM
-			                        ORDER BY I.ITEMNUM DESC
-			                    ) IT
-					    ) IT
-			    WHERE R BETWEEN #{startRow} and #{lastRow}
+				(SELECT ROWNUM R, IT.* FROM
+		            (SELECT * FROM ITEM I
+                        LEFT JOIN
+                        ITEMIMAGE IM
+                        ON I.ITEMNUM = IM.ITEMNUM
+                        ORDER BY I.ITEMNUM DESC
+                    ) IT
+				) IT
+			WHERE R BETWEEN #{startRow} AND #{lastRow}
     	</select>
     	
     	<!-- 카테고리 메인 -->
  		<select id="getList" resultMap="getMainResult" parameterType="Pager">
-				SELECT IT.* FROM
-					    (SELECT ROWNUM R, IT.* FROM
-					            (SELECT * FROM ITEM I
-			                        left join
-			                        itemimage IM
-			                        on I.ITEMNUM = IM.ITEMNUM
-					            	<include refid="select"></include>
-					            	AND ITEMCATEGORY LIKE '%'||#{filter}||'%'
-					            	<include refid="sort"></include>
-			                    ) IT
-					    ) IT
-			    WHERE R BETWEEN #{startRow} and #{lastRow}
-
+			SELECT IT.* FROM
+			    (SELECT ROWNUM R, IT.* FROM
+		            (SELECT * FROM ITEM I
+                        LEFT JOIN
+                        ITEMIMAGE IM
+                        ON I.ITEMNUM = IM.ITEMNUM
+		            	<include refid="select"></include>
+		            	AND ITEMCATEGORY LIKE '%'||#{filter}||'%'
+		            	<include refid="sort"></include>
+                    ) IT
+			    ) IT
+			WHERE R BETWEEN #{startRow} AND #{lastRow}
 		</select>
 		
 		<resultMap type="ItemDTO" id="getMainResult">
 			<id column="itemnum" property="itemNum"/>
-				<result column="membernum" property="memberNum"/>
-				<result column="itemtitle" property="itemTitle"/>
-				<result column="itemcontents" property="itemContents"/>
-				<result column="itemcategory" property="itemCategory"/>
-				<result column="itemprice" property="itemPrice"/>
-				<result column="itemduedate" property="itemDueDate"/>
-				<result column="itemstatus" property="itemStatus"/>
-				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
-					<id column="filenum" property="fileNum"/>
-					<result column="filename" property="fileName"/>
-					<result column="oriname" property="oriName"/>
-				</collection>
+			<result column="membernum" property="memberNum"/>
+			<result column="itemtitle" property="itemTitle"/>
+			<result column="itemcontents" property="itemContents"/>
+			<result column="itemcategory" property="itemCategory"/>
+			<result column="itemprice" property="itemPrice"/>
+			<result column="itemduedate" property="itemDueDate"/>
+			<result column="itemstatus" property="itemStatus"/>
+			
+			<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
+				<id column="filenum" property="fileNum"/>
+				<result column="filename" property="fileName"/>
+				<result column="oriname" property="oriName"/>
+			</collection>
 		</resultMap>
 
 		<!-- 찜 목록 -->
 		<select id="getLikeList" resultMap="getLikeResult" parameterType="ItemDTO">
-				SELECT *
-			FROM ITEM I
+			SELECT *
+				FROM ITEM I
 		    	INNER JOIN ITEMIMAGE IM
 		        ON I.ITEMNUM = IM.ITEMNUM
 		        
 		        INNER JOIN ITEMLIKE IL
 		        ON I.ITEMNUM= IL.ITEMNUM
 
-     		WHERE IL.MEMBERNUM=#{memberNum}
+     		WHERE IL.MEMBERNUM=81
 		</select>
 		
 		<resultMap type="ItemDTO" id="getLikeResult">
@@ -107,9 +106,9 @@
 				<result column="itemduedate" property="itemDueDate"/>
 				<result column="itemstatus" property="itemStatus"/>
 				
-				<association property="itemLikeDTO" javaType="ItemLikeDTO">
+				<collection property="itemLikeDTOs" javaType="List" ofType="ItemLikeDTO">
 					<id column="likeNum" property="likeNum"/>
-				</association>
+				</collection>
 				
 				<collection property="itemImageDTOs" javaType="List" ofType="ItemImageDTO">
 					<id column="filenum" property="fileNum"/>

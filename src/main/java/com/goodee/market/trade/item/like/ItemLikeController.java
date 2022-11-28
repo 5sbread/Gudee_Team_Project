@@ -13,19 +13,18 @@ public class ItemLikeController {
 	@Autowired
 	private ItemLikeService itemLikeService;
 	
+	//좋아요 
 	@PostMapping("like")
 	@ResponseBody
 	public int addLike(ItemLikeDTO itemLikeDTO) throws Exception {
-		
 		int result = itemLikeService.setLike(itemLikeDTO);
 		return result;
 	}
 	
-	
+	//좋아요 취소
 	@PostMapping("unlike")
 	@ResponseBody
 	public int deleteLike(ItemLikeDTO itemLikeDTO) throws Exception {
-		
 		int result = itemLikeService.setUnlike(itemLikeDTO);
 		return result;
 	}

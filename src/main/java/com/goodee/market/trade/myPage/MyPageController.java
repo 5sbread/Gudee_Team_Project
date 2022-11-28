@@ -21,7 +21,7 @@ import com.goodee.market.trade.review.ReviewDTO;
 import com.goodee.market.util.MyPagePager;
 import com.goodee.market.util.Pager;
 
-@Controller  //return 값은 내부 파일명
+@Controller
 @RequestMapping(value = "/mypage/trade/*")
 public class MyPageController {
 	
@@ -44,7 +44,6 @@ public class MyPageController {
 		ar = myPageService.getBuyItemList(memberDTO);
 		mv.addObject("buyitemlist", ar);
 		//후기목록
-		ReviewDTO reviewDTO = new ReviewDTO();
 		List<ReviewDTO> ar2 = myPageService.getReviewList(memberDTO);
 		mv.addObject("reviewlist", ar2);
 		

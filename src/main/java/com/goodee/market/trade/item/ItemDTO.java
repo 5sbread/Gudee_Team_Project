@@ -17,9 +17,13 @@ public class ItemDTO{
 	   private Integer itemPrice;
 	   private Date itemDueDate;
 	   private Integer itemStatus;
+	   
 	   private List<ItemImageDTO> itemImageDTOs;
 	   private List<ItemLikeDTO> itemLikeDTOs;
 	   private List<BuyerDTO> buyerDTOs;
+	   
+	   
+	   
 	   
 	public List<ItemLikeDTO> getItemLikeDTOs() {
 		return itemLikeDTOs;

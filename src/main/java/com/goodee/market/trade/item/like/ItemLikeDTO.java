@@ -1,8 +1,7 @@
 package com.goodee.market.trade.item.like;
 
 public class ItemLikeDTO {
-	
-	
+
 	   private Long likeNum;
 	   private Long itemNum;
 	   private Long memberNum;

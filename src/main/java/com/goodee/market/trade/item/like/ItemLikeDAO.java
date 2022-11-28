@@ -29,5 +29,9 @@ public class ItemLikeDAO {
 	public int getItemLike (ItemDTO itemDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getItemLike", itemDTO);
 	}
+	
+	public int getLikeCount (ItemLikeDTO itemLikeDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getLikeCount", itemLikeDTO);
+	}
 
 }

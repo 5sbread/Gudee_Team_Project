@@ -1,5 +1,5 @@
 
-const memberNum = $("#memberNum").val();
+let memberNum = $("#memberNum").val();
 
 $("#likeBtn").click(function(){
 	$.ajax({
@@ -10,12 +10,10 @@ $("#likeBtn").click(function(){
 			memberNum : memberNum
 		},
 		success : function(){
-            console.log("찜 성공")
-			
+			location.reload()
 		},
 		error : function(){
-            console.log("찜 x")
-			
+			location.reload()
 		}
 	})
 });
@@ -30,12 +28,27 @@ $("#unlikeBtn").click(function(){
 			memberNum : memberNum
 		},
 		success : function(){
-            console.log("찜 취소 성공")
-			
+            location.reload()
 		},
 		error : function(){
-            console.log("취소 x")
-			
+            location.reload()
+		}
+	})
+});
+
+$(".delme_Btn").click(function(){
+	$.ajax({
+		type : "POST",
+		url : "itemlike/unlike",
+		data : {
+			itemNum : itemNum,
+			memberNum : memberNum
+		},
+		success : function(){
+            location.reload()
+		},
+		error : function(){
+            location.reload()
 		}
 	})
 });

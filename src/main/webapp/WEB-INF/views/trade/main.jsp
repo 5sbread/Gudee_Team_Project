@@ -64,24 +64,23 @@
 	</div>
 </div>
     
-    <!-- 인기 상품 -->
     <section class="main-item">
     <div class="mainItemBody">
+	    <!-- 타이틀 -->
 	    <div class="row">
 	         <div class="item-text">
 	             <a href="#" class="title-text">👍 최신 상품</a>
 	             <h6 class="sub-text">방금 등록된 상품이에요!</h6>
 	         </div>
 	    </div>
+	    <!-- 사진 및 제목 가격 -->
 	    <div class="item-row">                    
 	        <c:forEach var="item" items="${list}">
 	             <div class="col-lg-4 col-md-6 col-sm-6">
 	                  <div class="product-item">
 	                       <div class="featured-item-pic">
 	                                <img alt="" src="../resources/upload/item/${item.itemImageDTOs[0].fileName}">
-	                       		
 	                       </div>
-	
 	                       <div class="featured-item-text">
 	                            <h6><a href="../trade/detail?num=${item.itemNum}" class="item-name">${item.itemTitle}</a></h6>
 	                            <h5>${item.itemPrice}</h5>

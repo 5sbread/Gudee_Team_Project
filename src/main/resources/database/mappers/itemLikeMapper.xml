@@ -7,7 +7,7 @@
      	
      	<!-- 상품 좋아요 -->
      	<insert id="setLike" parameterType="ItemLikeDTO">
-			INSERT INTO ITEMLIKE_MEMBER(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
+			INSERT INTO ITEMLIKE(MEMBERNUM, ITEMNUM) VALUES(#{memberNum}, #{itemNum})
 		</insert>
 		
 		<!-- 상품 좋아요 취소 -->
@@ -17,12 +17,17 @@
 		
 		<!-- 회원이 상품 좋아요를 누른 상태인지 -->
 		<select id="isLikeExist" parameterType="ItemLikeDTO" resultType="Integer">
-			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum} AND MEMBERNUM = #{memberNum}
+			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = 222 AND MEMBERNUM = 81
 		</select>
 		
 		<!-- 상품에 대한 좋아요 갯수 -->
 		<select id="getItemLike" parameterType="ItemDTO" resultType="Integer">
 			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE ITEMNUM = #{itemNum}
+		</select>
+		
+		<!-- 유저가 좋아요한 상품 갯수 -->
+		<select id="getLikeCount" parameterType="ItemLikeDTO" resultType="Integer">
+			SELECT COUNT(LIKENUM) FROM ITEMLIKE WHERE MEMBERNUM = 81
 		</select>
      	
 </mapper>

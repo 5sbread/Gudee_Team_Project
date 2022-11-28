@@ -100,12 +100,11 @@ public class ItemController{
 	//메인페이지
 	@GetMapping(value = "main")
 	public ModelAndView getTradeMain(MainPager mainPager, HttpSession session)throws Exception {
-		System.out.println("중고 메인");
-		
 		ModelAndView mv = new ModelAndView();
+		//상품 목록
 		List<ItemDTO> ar = itemService.getTradeMain(mainPager);
-		
 		mv.addObject("list", ar);	
+		
 		mv.addObject("pager", mainPager);
 		mv.setViewName("trade/main");
 		return mv;
@@ -129,10 +128,16 @@ public class ItemController{
 	@GetMapping(value = "like")
 	public ModelAndView getLikeList (HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
+		//유저 정보
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		mv.addObject("member", memberDTO);
 		
+		//좋아요한 아이템 갯수
+		ItemLikeDTO itemLikeDTO = new ItemLikeDTO();
+		int count = likeService.getLikeCount(itemLikeDTO);
+		mv.addObject("count", count);
+
+		//좋아요한 아이템 목록
 		List<ItemDTO> ar = itemService.getLikeList(memberDTO);
 		mv.addObject("list", ar);
 		
